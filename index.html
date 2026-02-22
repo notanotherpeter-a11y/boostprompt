@@ -1334,7 +1334,7 @@ function trackPurchaseIntent() {
 }
 
 // === STRIPE CHECKOUT ===
-const stripe = Stripe('pk_live_51T2WLAqxSKYvYfDgRf0Wou8AdmyWmxeDcrgs3RflXKOsTBM0QzjFYrQBM25KaGBB6pz7A3xQnD4ughkJMObe081BxtuxVf'); // Replace with your publishable key
+const stripe = Stripe('pk_live_51T2rWLAqx5KYvfYDe1RWou0AdmyWwxeDcrg3sR1iUKosTBM0XQzjFYtOBM25kaG8B86ps7A39xOnD4hgtHkJWObe00i8R1xuVf'); // Your Stripe publishable key
 
 async function createCheckoutSession(priceId) {
   try {
@@ -1348,7 +1348,7 @@ async function createCheckoutSession(priceId) {
     button.disabled = true;
     
     // Create checkout session
-    const response = await fetch('/.netlify/functions/create-checkout', {
+    const response = await fetch('https://boostprompt.vercel.app/create-checkout', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -1435,14 +1435,14 @@ console.log('[BoostPrompt] 🔥 Psychology-optimized site loaded');
             return 'http://localhost:8788';
         }
         
-        // Use Netlify Functions for production
-        return '';  // Relative URLs for same-domain Netlify functions
+        // Use Vercel backend for production
+        return 'https://boostprompt.vercel.app';  // Vercel backend URL
     }
     
     // Configuration
     const CONFIG = {
         apiUrl: getApiUrl(),
-        endpoint: getApiUrl() ? '/chat' : '/.netlify/functions/chat',
+        endpoint: getApiUrl() ? '/chat' : '/chat',
         sessionId: 'session_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
         maxRetries: 3,
         retryDelay: 1000
