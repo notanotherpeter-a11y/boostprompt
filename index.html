@@ -44,7 +44,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 
 <!-- Stripe.js -->
-<script src="https://js.stripe.com/v3/"></script>
+<!-- Using Gumroad for payments -->
 
 <!-- Facebook Pixel Code -->
 <!-- REPLACE WITH REAL PIXEL ID -->
@@ -1333,58 +1333,13 @@ function trackPurchaseIntent() {
   console.log('[BoostPrompt] Purchase intent tracked');
 }
 
-// === STRIPE CHECKOUT ===
-const stripe = Stripe('pk_live_51T2rWLAqx5KYvfYDe1RWou0AdmyWwxeDcrg3sR1iUKosTBM0XQzjFYtOBM25kaG8B86ps7A39xOnD4hgtHkJWObe00i8R1xuVf'); // Your Stripe publishable key
-
+// === GUMROAD CHECKOUT ===
 async function createCheckoutSession(priceId) {
-  try {
-    // Track purchase intent
-    trackPurchaseIntent();
-    
-    // Show loading state
-    const button = event.target;
-    const originalText = button.textContent;
-    button.textContent = '🔄 Loading...';
-    button.disabled = true;
-    
-    // Create checkout session
-    const response = await fetch('https://boostprompt.vercel.app/create-checkout', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        priceId: priceId,
-        successUrl: `${window.location.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancelUrl: `${window.location.origin}/cancel`
-      })
-    });
-    
-    const session = await response.json();
-    
-    if (response.ok) {
-      // Redirect to Stripe Checkout
-      const { error } = await stripe.redirectToCheckout({
-        sessionId: session.sessionId
-      });
-      
-      if (error) {
-        console.error('Stripe error:', error);
-        alert('Something went wrong. Please try again.');
-      }
-    } else {
-      console.error('Checkout error:', session.error);
-      alert('Unable to start checkout. Please try again.');
-    }
-  } catch (error) {
-    console.error('Checkout failed:', error);
-    alert('Something went wrong. Please try again.');
-  } finally {
-    // Reset button
-    const button = event.target;
-    button.textContent = originalText;
-    button.disabled = false;
-  }
+  // Track purchase intent
+  trackPurchaseIntent();
+  
+  // Redirect to Gumroad product (opens in new tab)
+  window.open('https://peterscape633.gumroad.com/l/gqwfib', '_blank');
 }
 
 // === SMOOTH SCROLL ===
