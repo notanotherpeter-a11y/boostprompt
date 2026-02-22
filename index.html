@@ -44,7 +44,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 
 <!-- Stripe.js -->
-<!-- Using Gumroad for payments -->
+<script src="https://js.stripe.com/v3/"></script>
 
 <!-- Facebook Pixel Code -->
 <!-- REPLACE WITH REAL PIXEL ID -->
@@ -841,7 +841,7 @@ footer{padding:60px 24px 40px;border-top:1px solid var(--border)}
           <span class="orig">$49</span>
           <span class="save">SAVE $30</span>
         </div>
-        <button class="product-btn buy" onclick="window.open('https://peterscape633.gumroad.com/l/gqwfib', '_blank')">⚡ Get Instant Access — $19</button>
+        <button class="product-btn buy" onclick="createCheckoutSession('price_1T3bDMAqx5KYvfYDr16bU0eS')">⚡ Get Instant Access — $19</button>
         <div class="buyer-count"><span class="dot"></span> 127 people bought this week</div>
       </div>
       
@@ -863,7 +863,7 @@ footer{padding:60px 24px 40px;border-top:1px solid var(--border)}
           <span class="orig">$97</span>
           <span class="save">SAVE $58</span>
         </div>
-        <button class="product-btn buy" onclick="window.open('https://peterscape633.gumroad.com/l/gqwfib', '_blank')">⚡ Get Instant Access — $39</button>
+        <button class="product-btn buy" onclick="createCheckoutSession('price_1T3bCNAqx5KYvfYD3cWcXjc1')">⚡ Get Instant Access — $39</button>
         <!-- TODO: Replace with specific product link when AI Starter Bundle is published on Gumroad -->
         <div class="buyer-count"><span class="dot"></span> 84 people bought this week</div>
       </div>
@@ -1038,7 +1038,7 @@ footer{padding:60px 24px 40px;border-top:1px solid var(--border)}
     <div class="footer-links">
       <div class="footer-col"><h5>Products</h5><a href="#products">All Products</a><a href="#products">AI Prompts</a><a href="#products">Templates</a><a href="#products">Bundles</a></div>
       <div class="footer-col"><h5>Company</h5><a href="#features">About</a><a href="#email">Newsletter</a><a href="mailto:hello@boostprompt.ai">Contact</a></div>
-      <div class="footer-col"><h5>Connect</h5><a href="https://twitter.com/notanotherpeter" target="_blank" rel="noopener">Twitter/X</a><a href="https://peterscape633.gumroad.com" target="_blank" rel="noopener">Gumroad Store</a></div>
+      <div class="footer-col"><h5>Connect</h5><a href="https://twitter.com/notanotherpeter" target="_blank" rel="noopener">Twitter/X</a><a href="#products" onclick="trackPurchaseIntent()">Our Products</a></div>
     </div>
   </div>
   <div class="footer-bottom">
@@ -1333,13 +1333,53 @@ function trackPurchaseIntent() {
   console.log('[BoostPrompt] Purchase intent tracked');
 }
 
-// === GUMROAD CHECKOUT ===
+// === STRIPE CHECKOUT ===
+const stripe = Stripe('pk_live_51T2rWLAqx5KYvfYDe1RWou0AdmyWwxeDcrg3sR1iUKosTBM0XQzjFYtOBM25kaG8B86ps7A39xOnD4hgtHkJWObe00i8R1xuVf');
+
 async function createCheckoutSession(priceId) {
-  // Track purchase intent
-  trackPurchaseIntent();
-  
-  // Redirect to Gumroad product (opens in new tab)
-  window.open('https://peterscape633.gumroad.com/l/gqwfib', '_blank');
+  try {
+    // Track purchase intent
+    trackPurchaseIntent();
+    
+    // Show loading state
+    const button = event.target;
+    const originalText = button.textContent;
+    button.textContent = '🔄 Loading...';
+    button.disabled = true;
+    
+    // Create checkout session
+    const response = await fetch('https://boostprompt.vercel.app/create-checkout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        priceId: priceId,
+        successUrl: `${window.location.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancelUrl: `${window.location.origin}/cancel`
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to create checkout session');
+    }
+
+    const { url } = await response.json();
+    
+    // Redirect to Stripe Checkout
+    window.location = url;
+    
+  } catch (error) {
+    console.error('Checkout failed:', error);
+    alert('Something went wrong. Please try again.');
+  } finally {
+    // Reset button
+    const button = event.target;
+    if (button) {
+      button.textContent = originalText || 'Buy Now $19';
+      button.disabled = false;
+    }
+  }
 }
 
 // === SMOOTH SCROLL ===
