@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Purchase Cancelled — BoostPrompt</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#0a0a0c;color:#fff;margin:0;padding:40px 20px;text-align:center}
+.cancel-container{max-width:600px;margin:0 auto}
+.cancel-icon{font-size:80px;margin-bottom:20px}
+h1{color:#f97316;margin-bottom:16px}
+.offer{background:#1a1a1c;padding:30px;border-radius:12px;margin:30px 0}
+.cta{display:inline-block;background:#10b981;color:#000;padding:15px 30px;border-radius:8px;text-decoration:none;font-weight:600;margin:10px}
+.secondary{display:inline-block;color:#10b981;padding:15px 30px;text-decoration:none;border:1px solid #10b981;border-radius:8px;margin:10px}
+.guarantee{color:#888;font-size:14px;margin-top:30px;padding:20px;background:#111;border-radius:8px}
+</style>
+</head>
+<body>
+
+<div class="cancel-container">
+  <div class="cancel-icon">🤔</div>
+  <h1>Purchase Cancelled</h1>
+  <p>No worries! Your payment wasn't processed.</p>
+
+  <div class="offer">
+    <h3>🔥 Still thinking it over?</h3>
+    <p>2,847+ entrepreneurs are already saving 10+ hours per week with these prompts.</p>
+    <p><strong>Limited time:</strong> 50% off launch pricing ends soon.</p>
+    
+    <a href="/#products" class="cta">⚡ Get Instant Access — $19</a>
+    <a href="/free-sample" class="secondary">📋 Get Free Sample First</a>
+  </div>
+
+  <div class="guarantee">
+    <strong>🛡️ 30-Day Money-Back Guarantee</strong><br>
+    Not happy? Get a full refund, no questions asked.
+  </div>
+
+  <p style="margin-top:40px;">
+    <a href="mailto:support@boostprompt.dev" style="color:#10b981">Questions? Email us</a> — 
+    We respond in under 2 hours.
+  </p>
+</div>
+
+<script>
+// Track cancellation for optimization
+if (window.gtag) {
+  gtag('event', 'checkout_cancel', {
+    'event_category': 'ecommerce',
+    'event_label': 'payment_cancelled'
+  });
+}
+</script>
+
+</body>
+</html>
