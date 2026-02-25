@@ -203,7 +203,7 @@ const stripe = Stripe('pk_live_51Q5JklAqx5KYvfYDJtT8aHe5Bk0VlLVgr2WG6UtR4Th8l2QV
 
 async function handlePurchase(priceId) {
     try {
-        const response = await // EMERGENCY FIX: Redirect to email contact
+        const response = await fetch('/.netlify/functions/create-checkout', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

@@ -1346,44 +1346,26 @@ async function createCheckoutSession(priceId) {
     const originalText = button.textContent;
     button.textContent = '🔄 Loading...';
     button.disabled = true;
+
+    // EMERGENCY FIX: GitHub Pages can't run server functions
+    // Redirect to email contact until Stripe Payment Links are configured
+    const productNames = {
+      'price_1T3bDMAqx5KYvfYDr16bU0eS': '$19 AI Prompts Pack',
+      'price_1T3bCNAqx5KYvfYD3cWcXjc1': '$39 AI Starter Bundle'
+    };
     
-    // Create checkout session
-    const response = await fetch('/.netlify/functions/create-checkout', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        priceId: priceId,
-        successUrl: `${window.location.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancelUrl: `${window.location.origin}/cancel`
-      })
-    });
+    const productName = productNames[priceId] || 'BoostPrompt Product';
+    const subject = encodeURIComponent('Purchase Request: ' + productName);
+    const body = encodeURIComponent(`Hi! I'd like to purchase the ${productName}. Please send me the payment link!`);
     
-    const session = await response.json();
+    // Redirect to email contact
+    window.location.href = `mailto:notanotherpeter@gmail.com?subject=${subject}&body=${body}`;
     
-    if (response.ok) {
-      // Redirect to Stripe Checkout
-      const { error } = await stripe.redirectToCheckout({
-        sessionId: session.sessionId
-      });
-      
-      if (error) {
-        console.error('Stripe error:', error);
-        alert('Something went wrong. Please try again.');
-      }
-    } else {
-      console.error('Checkout error:', session.error);
-      alert('Unable to start checkout. Please try again.');
-    }
   } catch (error) {
     console.error('Checkout failed:', error);
-    alert('Something went wrong. Please try again.');
-  } finally {
-    // Reset button
-    const button = event.target;
-    button.textContent = originalText;
-    button.disabled = false;
+    
+    // Fallback email contact
+    window.location.href = 'mailto:notanotherpeter@gmail.com?subject=BoostPrompt%20Purchase%20Help&body=Hi!%20I%20need%20help%20purchasing%20your%20products.';
   }
 }
 

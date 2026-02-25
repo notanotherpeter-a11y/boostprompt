@@ -158,32 +158,19 @@ const stripe = Stripe('pk_live_51Q5JklAqx5KYvfYDJtT8aHe5Bk0VlLVgr2WG6UtR4Th8l2QV
 
 async function handlePurchase(priceId) {
     try {
-        const response = await fetch('/.netlify/functions/create-checkout', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                priceId: priceId,
-                successUrl: window.location.origin + '/success.html',
-                cancelUrl: window.location.origin + '/cancel.html'
-            })
-        });
-
-        const session = await response.json();
+        // EMERGENCY FIX: GitHub Pages doesn't support server functions
+        // Redirect to email contact for manual payment processing
+        const productName = '$29 AI Freelancer Starter Kit';
+        const subject = encodeURIComponent('Purchase Request: ' + productName);
+        const body = encodeURIComponent(`Hi! I'd like to purchase the ${productName}. Please send me the payment link!`);
         
-        if (response.ok) {
-            const result = await stripe.redirectToCheckout({ sessionId: session.sessionId });
-            
-            if (result.error) {
-                console.error('Stripe error:', result.error);
-                alert('Payment failed. Please try again.');
-            }
-        } else {
-            console.error('Backend error:', session);
-            alert('Payment setup error. Please try again or contact support.');
-        }
+        // Redirect to email contact
+        window.location.href = `mailto:notanotherpeter@gmail.com?subject=${subject}&body=${body}`;
+        
     } catch (error) {
         console.error('Purchase error:', error);
-        alert('Payment failed. Please try again.');
+        // Fallback email contact
+        window.location.href = 'mailto:notanotherpeter@gmail.com?subject=Freelancer%20Kit%20Purchase&body=Hi!%20I%20need%20help%20purchasing%20the%20Freelancer%20Kit.';
     }
 }
 </script>
