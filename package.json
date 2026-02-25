@@ -1,34 +1,15 @@
 {
-  "name": "boostprompt-site",
+  "name": "boostprompt-functions",
   "version": "1.0.0",
-  "description": "BoostPrompt — AI Prompt Packs with Stripe Integration",
-  "main": "index.html",
+  "description": "Netlify functions for BoostPrompt payment processing",
+  "main": "index.js",
+  "dependencies": {
+    "stripe": "^14.21.0"
+  },
   "scripts": {
     "dev": "netlify dev",
-    "build": "echo 'No build step needed'",
-    "deploy": "netlify deploy",
-    "deploy:prod": "netlify deploy --prod",
-    "setup-stripe": "node create-stripe-products.js"
+    "build": "echo 'No build step required'"
   },
-  "dependencies": {
-    "stripe": "^14.25.0"
-  },
-  "devDependencies": {
-    "netlify-cli": "^17.15.2"
-  },
-  "keywords": [
-    "ai-prompts",
-    "stripe",
-    "digital-products",
-    "netlify",
-    "chatgpt",
-    "business-automation"
-  ],
-  "author": "Gene Carlo <notanotherpeter@gmail.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/genecarlo/boostprompt"
-  },
-  "homepage": "https://boostprompt.dev"
+  "author": "BoostPrompt",
+  "license": "MIT"
 }
