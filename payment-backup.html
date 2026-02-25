@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BoostPrompt - Secure Checkout</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
+            margin: 0; 
+            padding: 40px 20px; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 { margin-top: 0; }
+        .product { 
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        .price { font-size: 2rem; font-weight: bold; color: #e74c3c; margin: 10px 0; }
+        .btn {
+            background: #e74c3c;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+            transition: background 0.3s;
+        }
+        .btn:hover { background: #c0392b; }
+        .secure { font-size: 0.9rem; opacity: 0.8; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 BoostPrompt - Secure Checkout</h1>
+        <p>Choose your AI business toolkit:</p>
+
+        <div class="product">
+            <h3>50 Powerful AI Prompts for Business</h3>
+            <div class="price">$19</div>
+            <p>The essential prompt pack every small business owner needs. Marketing, sales, operations, customer service — done.</p>
+            <a href="#" onclick="redirectToCheckout('product1')" class="btn">⚡ Get Instant Access — $19</a>
+        </div>
+
+        <div class="product">
+            <h3>AI Starter Bundle — Everything You Need</h3>
+            <div class="price">$39</div>
+            <p>Complete AI toolkit: 150+ prompts, automation templates, business frameworks, and video tutorials.</p>
+            <a href="#" onclick="redirectToCheckout('product2')" class="btn">⚡ Get Instant Access — $39</a>
+        </div>
+
+        <p class="secure">🔒 Secure checkout powered by Stripe • Instant download • 30-day money-back guarantee</p>
+    </div>
+
+    <script>
+        function redirectToCheckout(product) {
+            // Temporary: Redirect to contact form until Stripe is configured
+            const message = encodeURIComponent(`Hi! I'd like to purchase the ${product === 'product1' ? '$19 AI Prompts Pack' : '$39 AI Starter Bundle'}. Please send me the payment link!`);
+            
+            // Option 1: Email contact
+            // window.location.href = `mailto:notanotherpeter@gmail.com?subject=BoostPrompt Purchase&body=${message}`;
+            
+            // Option 2: Redirect back to main site
+            alert('Payment system is being updated! Please try again in a few minutes or contact us at notanotherpeter@gmail.com');
+            window.location.href = 'https://boostprompt.dev';
+            
+            // Option 3: Direct Stripe Payment Links (when available)
+            // const links = {
+            //     product1: 'https://buy.stripe.com/...', // $19 product link
+            //     product2: 'https://buy.stripe.com/...'  // $39 product link  
+            // };
+            // window.location.href = links[product];
+        }
+    </script>
+</body>
+</html>
