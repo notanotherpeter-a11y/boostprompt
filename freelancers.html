@@ -158,11 +158,16 @@ const stripe = Stripe('pk_live_51Q5JklAqx5KYvfYDJtT8aHe5Bk0VlLVgr2WG6UtR4Th8l2QV
 
 async function handlePurchase(priceId) {
     try {
-        const response = await fetch('https://boostprompt-backend.netlify.app/.netlify/functions/create-checkout-session', {
+        // TEMPORARY FIX: Redirect to main site working product page
+        // Until Stripe price IDs are properly configured
+        window.location.href = 'https://boostprompt.dev/#products';
+        
+        /* ORIGINAL CODE - TEMPORARILY DISABLED
+        const response = await fetch('/.netlify/functions/create-checkout', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                priceId: priceId,
+                priceId: 'price_1Q5JklAqx5KYvfYDJtT8aHe5Bk0VlLVgr2WG6UtR4Th8l2QVMHznKj3pJKjfg5zF2aRnJM8nh9x8V4yLGt1ZkJ6k00fUZhUOJi', // Use a working price ID
                 successUrl: window.location.origin + '/success.html',
                 cancelUrl: window.location.origin + '/cancel.html'
             })
@@ -173,11 +178,13 @@ async function handlePurchase(priceId) {
         
         if (result.error) {
             console.error('Stripe error:', result.error);
-            alert('Payment failed. Please try again.');
+            alert('Payment setup in progress. Please try again in a few minutes or contact support.');
         }
+        */
     } catch (error) {
         console.error('Purchase error:', error);
-        alert('Payment failed. Please try again.');
+        // Fallback to main product page
+        window.location.href = 'https://boostprompt.dev/#products';
     }
 }
 </script>
