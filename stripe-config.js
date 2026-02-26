@@ -18,21 +18,21 @@
 
     const PRODUCTS = {
         product1: {
-            priceId: 'price_1T3bDMAqx5KYvfYDr16bU0eS',
+            priceId: 'price_1T57ZKAqx5KYvfYDHi6vcvvQ',
             name: '50 AI Prompts Pack',
             amount: 19
         },
         product2: {
-            priceId: 'price_1T3bCNAqx5KYvfYD3cWcXjc1',
+            priceId: 'price_1T57ZLAqx5KYvfYD2pPT3Vbx',
             name: 'AI Starter Bundle',
             amount: 39
         },
-        marketing_agency: { priceId: 'price_1T3m6oAqx5KYvfYDOuvJtaXS', name: 'Marketing Agency AI Kit', amount: 49 },
-        business_consultant: { priceId: 'price_1T3bCNAqx5KYvfYD3cWcXjc1', name: 'Business Consultant AI Kit', amount: 39 },
-        freelancer: { priceId: 'price_1T3m6lAqx5KYvfYDSExc7fSy', name: 'Freelancer AI Kit', amount: 29 },
-        real_estate: { priceId: 'price_1T44p4Aqx5KYvfYD2ox2t4Hm', name: 'Real Estate Agent AI Kit', amount: 29 },
-        coach_trainer: { priceId: 'price_1T3m6mAqx5KYvfYDbH0eWHgo', name: 'Coaches & Trainers AI Kit', amount: 39 },
-        dental: { priceId: 'price_1T3bCNAqx5KYvfYD3cWcXjc1', name: 'Dental Practice AI Solutions', amount: 35 }
+        marketing_agency: { priceId: 'price_1T57ZLAqx5KYvfYDmvs0U4HY', name: 'Marketing Agency AI Kit', amount: 49 },
+        business_consultant: { priceId: 'price_1T57ZMAqx5KYvfYDfkFh5Ulm', name: 'Business Consultant AI Kit', amount: 39 },
+        freelancer: { priceId: 'price_1T57ZMAqx5KYvfYDRIzHPY2t', name: 'Freelancer AI Kit', amount: 29 },
+        real_estate: { priceId: 'price_1T57ZNAqx5KYvfYDqRNR0PpR', name: 'Real Estate Agent AI Kit', amount: 29 },
+        coach_trainer: { priceId: 'price_1T57ZOAqx5KYvfYDG1FUhXC8', name: 'Coaches & Trainers AI Kit', amount: 39 },
+        dental: { priceId: 'price_1T57ZOAqx5KYvfYD3yIAWzbE', name: 'Dental Practice AI Solutions', amount: 35 }
     };
 
     const SUCCESS_URL = window.location.origin + '/success.html';
@@ -207,12 +207,14 @@
     window.createCheckoutSession = window.createBoostPromptCheckout;
     window.handlePurchase = function(priceId) {
         var priceMap = {
-            'price_1T3bDMAqx5KYvfYDr16bU0eS': 'product1',
-            'price_1T3bCNAqx5KYvfYD3cWcXjc1': 'product2',
-            'price_1T3m6oAqx5KYvfYDOuvJtaXS': 'marketing_agency',
-            'price_1T3m6lAqx5KYvfYDSExc7fSy': 'freelancer',
-            'price_1T44p4Aqx5KYvfYD2ox2t4Hm': 'real_estate',
-            'price_1T3m6mAqx5KYvfYDbH0eWHgo': 'coach_trainer'
+            'price_1T57ZKAqx5KYvfYDHi6vcvvQ': 'product1',
+            'price_1T57ZLAqx5KYvfYD2pPT3Vbx': 'product2',
+            'price_1T57ZLAqx5KYvfYDmvs0U4HY': 'marketing_agency',
+            'price_1T57ZMAqx5KYvfYDRIzHPY2t': 'freelancer',
+            'price_1T57ZNAqx5KYvfYDqRNR0PpR': 'real_estate',
+            'price_1T57ZOAqx5KYvfYDG1FUhXC8': 'coach_trainer',
+            'price_1T57ZMAqx5KYvfYDfkFh5Ulm': 'business_consultant',
+            'price_1T57ZOAqx5KYvfYD3yIAWzbE': 'dental'
         };
         checkout(priceMap[priceId] || 'product1', findClickedButton());
     };
