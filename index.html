@@ -45,6 +45,8 @@
 
 <!-- Stripe.js -->
 <script src="https://js.stripe.com/v3/"></script>
+<!-- BoostPrompt Payment Configuration -->
+<script src="stripe-config.js"></script>
 
 <!-- Facebook Pixel Code -->
 <!-- REPLACE WITH REAL PIXEL ID -->
@@ -841,7 +843,7 @@ footer{padding:60px 24px 40px;border-top:1px solid var(--border)}
           <span class="orig">$49</span>
           <span class="save">SAVE $30</span>
         </div>
-        <button class="product-btn buy" onclick="createCheckoutSession('price_1T3bDMAqx5KYvfYDr16bU0eS')">⚡ Get Instant Access — $19</button>
+        <button class="product-btn buy" onclick="buyAIPromptsPack()">⚡ Get Instant Access — $19</button>
         <div class="buyer-count"><span class="dot"></span> 127 people bought this week</div>
       </div>
       
@@ -863,7 +865,7 @@ footer{padding:60px 24px 40px;border-top:1px solid var(--border)}
           <span class="orig">$97</span>
           <span class="save">SAVE $58</span>
         </div>
-        <button class="product-btn buy" onclick="createCheckoutSession('price_1T3bCNAqx5KYvfYD3cWcXjc1')">⚡ Get Instant Access — $39</button>
+        <button class="product-btn buy" onclick="buyAIStarterBundle()">⚡ Get Instant Access — $39</button>
         <!-- TODO: Replace with specific product link when AI Starter Bundle is published on Gumroad -->
         <div class="buyer-count"><span class="dot"></span> 84 people bought this week</div>
       </div>
@@ -942,16 +944,16 @@ footer{padding:60px 24px 40px;border-top:1px solid var(--border)}
   <div style="max-width:1200px;margin:0 auto;padding:0 24px">
     <div class="section-label animate">Who It's For</div>
     <h2 class="section-title animate">Built for Every Business</h2>
-    <p class="section-sub animate">No matter your industry, AI prompts save you time and money. Click your industry below for specialized solutions.</p>
+    <p class="section-sub animate">No matter your industry, AI prompts save you time and money.</p>
     <div class="use-grid">
-      <a href="/business-consultants" class="use-card animate delay-1" style="text-decoration: none; color: inherit;"><div class="icon">🏪</div><h4>Small Business</h4><p>Marketing, hiring, customer service — on autopilot</p><span class="savings">Save ~$24K/yr</span></a>
-      <a href="/freelancers" class="use-card animate delay-2" style="text-decoration: none; color: inherit;"><div class="icon">💼</div><h4>Freelancers</h4><p>Proposals, invoices, client comms — in minutes</p><span class="savings">Save ~$18K/yr</span></a>
-      <a href="/dentists" class="use-card animate delay-3" style="text-decoration: none; color: inherit;"><div class="icon">🏥</div><h4>Healthcare</h4><p>Patient comms, scheduling, documentation</p><span class="savings">Save ~$36K/yr</span></a>
-      <a href="/real-estate-agents" class="use-card animate delay-4" style="text-decoration: none; color: inherit;"><div class="icon">🏠</div><h4>Real Estate</h4><p>Listings, follow-ups, market reports</p><span class="savings">Save ~$28K/yr</span></a>
+      <div class="use-card animate delay-1"><div class="icon">🏪</div><h4>Small Business</h4><p>Marketing, hiring, customer service — on autopilot</p><span class="savings">Save ~$24K/yr</span></div>
+      <div class="use-card animate delay-2"><div class="icon">💼</div><h4>Freelancers</h4><p>Proposals, invoices, client comms — in minutes</p><span class="savings">Save ~$18K/yr</span></div>
+      <div class="use-card animate delay-3"><div class="icon">🏥</div><h4>Healthcare</h4><p>Patient comms, scheduling, documentation</p><span class="savings">Save ~$36K/yr</span></div>
+      <div class="use-card animate delay-4"><div class="icon">🏠</div><h4>Real Estate</h4><p>Listings, follow-ups, market reports</p><span class="savings">Save ~$28K/yr</span></div>
       <div class="use-card animate delay-1"><div class="icon">⚖️</div><h4>Legal</h4><p>Client intake, document drafts, research</p><span class="savings">Save ~$45K/yr</span></div>
       <div class="use-card animate delay-2"><div class="icon">🛒</div><h4>E-Commerce</h4><p>Product descriptions, ads, email at scale</p><span class="savings">Save ~$20K/yr</span></div>
-      <a href="/marketing-agencies" class="use-card animate delay-3" style="text-decoration: none; color: inherit;"><div class="icon">📱</div><h4>Agencies</h4><p>10x content production without hiring</p><span class="savings">Save ~$60K/yr</span></a>
-      <a href="/coaches-trainers" class="use-card animate delay-4" style="text-decoration: none; color: inherit;"><div class="icon">🎓</div><h4>Coaches</h4><p>Course content, social posts, email funnels</p><span class="savings">Save ~$15K/yr</span></a>
+      <div class="use-card animate delay-3"><div class="icon">📱</div><h4>Agencies</h4><p>10x content production without hiring</p><span class="savings">Save ~$60K/yr</span></div>
+      <div class="use-card animate delay-4"><div class="icon">🎓</div><h4>Coaches</h4><p>Course content, social posts, email funnels</p><span class="savings">Save ~$15K/yr</span></div>
     </div>
   </div>
 </section>
@@ -1334,40 +1336,7 @@ function trackPurchaseIntent() {
 }
 
 // === STRIPE CHECKOUT ===
-const stripe = Stripe('pk_live_51T2WLAqxSKYvYfDgRf0Wou8AdmyWmxeDcrgs3RflXKOsTBM0QzjFYrQBM25KaGBB6pz7A3xQnD4ughkJMObe081BxtuxVf'); // Replace with your publishable key
-
-async function createCheckoutSession(priceId) {
-  try {
-    // Track purchase intent
-    trackPurchaseIntent();
-    
-    // Show loading state
-    const button = event.target;
-    const originalText = button.textContent;
-    button.textContent = '🔄 Loading...';
-    button.disabled = true;
-
-    // EMERGENCY FIX: GitHub Pages can't run server functions
-    // Redirect to email contact until Stripe Payment Links are configured
-    const productNames = {
-      'price_1T3bDMAqx5KYvfYDr16bU0eS': '$19 AI Prompts Pack',
-      'price_1T3bCNAqx5KYvfYD3cWcXjc1': '$39 AI Starter Bundle'
-    };
-    
-    const productName = productNames[priceId] || 'BoostPrompt Product';
-    const subject = encodeURIComponent('Purchase Request: ' + productName);
-    const body = encodeURIComponent(`Hi! I'd like to purchase the ${productName}. Please send me the payment link!`);
-    
-    // Redirect to email contact
-    window.location.href = `mailto:notanotherpeter@gmail.com?subject=${subject}&body=${body}`;
-    
-  } catch (error) {
-    console.error('Checkout failed:', error);
-    
-    // Fallback email contact
-    window.location.href = 'mailto:notanotherpeter@gmail.com?subject=BoostPrompt%20Purchase%20Help&body=Hi!%20I%20need%20help%20purchasing%20your%20products.';
-  }
-}
+// 💳 Payment functions now loaded from stripe-config.js
 
 // === SMOOTH SCROLL ===
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
