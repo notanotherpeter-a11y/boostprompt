@@ -8,7 +8,9 @@ console.log('🔗 Payment Links system loading...');
 // Direct Stripe Payment Links (work immediately)
 const PAYMENT_LINKS = {
     product1: 'https://buy.stripe.com/14AaEWgvp0NT2un3HObV600', // $19
-    product2: 'https://buy.stripe.com/aFa4gy1AveEJ1qj7Y4bV601'  // $39
+    product2: 'https://buy.stripe.com/aFa4gy1AveEJ1qj7Y4bV601', // $39
+    product3: 'https://buy.stripe.com/eVqbJ0cf99kp3yr0vCbV603', // $29 Prompt Engineering Bible
+    product4: 'https://buy.stripe.com/bJecN4enh4053yremsbV602'  // $24 Email Templates
 };
 
 // Simple redirect function
@@ -54,6 +56,8 @@ function paymentLinkCheckout(productKey, productName) {
 // Override main functions with payment links
 window.paymentLinkBuy19 = () => paymentLinkCheckout('product1', '50 AI Prompts Pack ($19)');
 window.paymentLinkBuy39 = () => paymentLinkCheckout('product2', 'AI Starter Bundle ($39)');
+window.buyPromptEngineeringBible = () => paymentLinkCheckout('product3', 'Prompt Engineering Bible ($29)');
+window.buyEmailTemplates = () => paymentLinkCheckout('product4', 'AI Email & Outreach Templates ($24)');
 
 // Auto-activate if main payment system fails
 setTimeout(() => {

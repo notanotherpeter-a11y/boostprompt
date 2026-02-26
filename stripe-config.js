@@ -32,7 +32,9 @@
         freelancer: { priceId: 'price_1T57ZMAqx5KYvfYDRIzHPY2t', name: 'Freelancer AI Kit', amount: 29 },
         real_estate: { priceId: 'price_1T57ZNAqx5KYvfYDqRNR0PpR', name: 'Real Estate Agent AI Kit', amount: 29 },
         coach_trainer: { priceId: 'price_1T57ZOAqx5KYvfYDG1FUhXC8', name: 'Coaches & Trainers AI Kit', amount: 39 },
-        dental: { priceId: 'price_1T57ZOAqx5KYvfYD3yIAWzbE', name: 'Dental Practice AI Solutions', amount: 35 }
+        dental: { priceId: 'price_1T57ZOAqx5KYvfYD3yIAWzbE', name: 'Dental Practice AI Solutions', amount: 35 },
+        product3: { priceId: 'price_1T57tvAqx5KYvfYDT73fIFw4', name: 'Prompt Engineering Bible', amount: 29 },
+        product4: { priceId: 'price_1T57tvAqx5KYvfYDL9QA7RNC', name: 'AI Email & Outreach Templates', amount: 24 }
     };
 
     const SUCCESS_URL = window.location.origin + '/success.html';
@@ -195,6 +197,8 @@
     // These are called from onclick handlers in the HTML
     window.buyAIPromptsPack = function() { checkout('product1', findClickedButton()); };
     window.buyAIStarterBundle = function() { checkout('product2', findClickedButton()); };
+    window.buyPromptEngineeringBible = function() { checkout('product3', findClickedButton()); };
+    window.buyEmailTemplates = function() { checkout('product4', findClickedButton()); };
     window.buyMarketingAgencyKit = function() { checkout('marketing_agency', findClickedButton()); };
     window.buyBusinessConsultantKit = function() { checkout('business_consultant', findClickedButton()); };
     window.buyFreelancerKit = function() { checkout('freelancer', findClickedButton()); };
