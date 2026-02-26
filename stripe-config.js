@@ -202,9 +202,20 @@
     window.buyCoachTrainerKit = function() { checkout('coach_trainer', findClickedButton()); };
     window.buyDentalKit = function() { checkout('dental', findClickedButton()); };
 
-    // Legacy
+    // Legacy support
     window.createBoostPromptCheckout = function(productKey, productName) { checkout(productKey, findClickedButton()); };
     window.createCheckoutSession = window.createBoostPromptCheckout;
+    window.handlePurchase = function(priceId) {
+        var priceMap = {
+            'price_1T3bDMAqx5KYvfYDr16bU0eS': 'product1',
+            'price_1T3bCNAqx5KYvfYD3cWcXjc1': 'product2',
+            'price_1T3m6oAqx5KYvfYDOuvJtaXS': 'marketing_agency',
+            'price_1T3m6lAqx5KYvfYDSExc7fSy': 'freelancer',
+            'price_1T44p4Aqx5KYvfYD2ox2t4Hm': 'real_estate',
+            'price_1T3m6mAqx5KYvfYDbH0eWHgo': 'coach_trainer'
+        };
+        checkout(priceMap[priceId] || 'product1', findClickedButton());
+    };
 
     // Find the button that was just clicked (safer than event.target)
     function findClickedButton() {

@@ -198,34 +198,8 @@ body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; }
     </div>
 </section>
 
-<script>
-const stripe = Stripe('pk_live_51Q5JklAqx5KYvfYDJtT8aHe5Bk0VlLVgr2WG6UtR4Th8l2QVMHznKj3pJKjfg5zF2aRnJM8nh9x8V4yLGt1ZkJ6k00fUZhUOJi');
-
-async function handlePurchase(priceId) {
-    try {
-        const response = await // EMERGENCY FIX: Redirect to email contact
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                priceId: priceId,
-                successUrl: window.location.origin + '/success.html',
-                cancelUrl: window.location.origin + '/cancel.html'
-            })
-        });
-
-        const { sessionId } = await response.json();
-        const result = await stripe.redirectToCheckout({ sessionId });
-        
-        if (result.error) {
-            console.error('Stripe error:', result.error);
-            alert('Payment failed. Please try again.');
-        }
-    } catch (error) {
-        console.error('Purchase error:', error);
-        alert('Payment failed. Please try again.');
-    }
-}
-</script>
+<script src="/stripe-config.js"></script>
+<script src="/emergency-payment-fix.js"></script>
 
 </body>
 </html>

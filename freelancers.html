@@ -153,27 +153,8 @@ body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; }
     </div>
 </section>
 
-<script>
-const stripe = Stripe('pk_live_51Q5JklAqx5KYvfYDJtT8aHe5Bk0VlLVgr2WG6UtR4Th8l2QVMHznKj3pJKjfg5zF2aRnJM8nh9x8V4yLGt1ZkJ6k00fUZhUOJi');
-
-async function handlePurchase(priceId) {
-    try {
-        // EMERGENCY FIX: GitHub Pages doesn't support server functions
-        // Redirect to email contact for manual payment processing
-        const productName = '$29 AI Freelancer Starter Kit';
-        const subject = encodeURIComponent('Purchase Request: ' + productName);
-        const body = encodeURIComponent(`Hi! I'd like to purchase the ${productName}. Please send me the payment link!`);
-        
-        // Redirect to email contact
-        window.location.href = `mailto:notanotherpeter@gmail.com?subject=${subject}&body=${body}`;
-        
-    } catch (error) {
-        console.error('Purchase error:', error);
-        // Fallback email contact
-        window.location.href = 'mailto:notanotherpeter@gmail.com?subject=Freelancer%20Kit%20Purchase&body=Hi!%20I%20need%20help%20purchasing%20the%20Freelancer%20Kit.';
-    }
-}
-</script>
+<script src="/stripe-config.js"></script>
+<script src="/emergency-payment-fix.js"></script>
 
 </body>
 </html>
