@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Links Test - BoostPrompt</title>
+    <style>
+        body { 
+            font-family: system-ui; 
+            padding: 20px; 
+            background: #0a0a0c; 
+            color: white;
+            text-align: center;
+        }
+        .payment-button {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px;
+            display: block;
+            width: 300px;
+            margin: 20px auto;
+            text-decoration: none;
+        }
+        .payment-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+        }
+        .success {
+            background: #065f46;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 2px solid #10b981;
+        }
+        .info {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid #333;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>✅ Working Payment Links</h1>
+    <p>These links work immediately - no dashboard settings needed!</p>
+    
+    <div class="success">
+        <strong>✅ SOLUTION ACTIVE:</strong> Bypassed Stripe dashboard issue with direct Payment Links
+    </div>
+
+    <a href="https://buy.stripe.com/14AaEWgvp0NT2un3HObV600" class="payment-button">
+        💳 Buy $19 AI Prompts Pack
+    </a>
+    
+    <a href="https://buy.stripe.com/aFa4gy1AveEJ1qj7Y4bV601" class="payment-button">
+        🚀 Buy $39 AI Starter Bundle
+    </a>
+
+    <div class="info">
+        <h3>🔍 What These Links Do:</h3>
+        <ul>
+            <li><strong>Direct Stripe checkout</strong> - no JavaScript needed</li>
+            <li><strong>Bypass dashboard settings</strong> - work immediately</li>
+            <li><strong>Same secure payment</strong> - processed by Stripe</li>
+            <li><strong>Mobile optimized</strong> - perfect for iPhone Safari</li>
+        </ul>
+    </div>
+
+    <div class="info">
+        <h3>🛠️ To Fix Main Site:</h3>
+        <p><strong>Option 1:</strong> Enable "Client-only integration" in <a href="https://dashboard.stripe.com/account/checkout/settings" target="_blank" style="color: #10b981;">Stripe Dashboard</a></p>
+        <p><strong>Option 2:</strong> Update website buttons to use these Payment Links</p>
+    </div>
+
+    <script>
+        // Track clicks
+        document.querySelectorAll('.payment-button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                console.log('Payment Link clicked:', btn.href);
+                
+                // Show feedback
+                btn.textContent = '🔄 Opening Stripe Checkout...';
+                btn.style.background = '#059669';
+                
+                // Facebook Pixel tracking
+                if (typeof fbq !== 'undefined') {
+                    const is19 = btn.href.includes('HObV600');
+                    fbq('track', 'InitiateCheckout', { 
+                        content_name: is19 ? '50 AI Prompts Pack' : 'AI Starter Bundle',
+                        currency: 'USD',
+                        value: is19 ? 19 : 39
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
