@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Test - BoostPrompt</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        body { 
+            font-family: system-ui; 
+            padding: 20px; 
+            background: #0a0a0c; 
+            color: white;
+            text-align: center;
+        }
+        .test-button {
+            background: #10b981;
+            color: white;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px;
+            display: block;
+            width: 300px;
+            margin: 20px auto;
+        }
+        .test-button:hover {
+            background: #059669;
+        }
+        .status {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid #333;
+        }
+        .success { border-color: #10b981; }
+        .error { border-color: #ef4444; }
+    </style>
+</head>
+<body>
+    <h1>🧪 BoostPrompt Payment Test</h1>
+    <p>Direct test with real Stripe products - bypasses all caching</p>
+    
+    <div id="status" class="status">
+        <strong>Status:</strong> Ready for testing
+    </div>
+
+    <button class="test-button" onclick="testPayment19()">
+        💳 Test $19 Product
+    </button>
+    
+    <button class="test-button" onclick="testPayment39()">
+        💳 Test $39 Product
+    </button>
+
+    <div style="margin-top: 40px; padding: 20px; background: #1a1a1a; border-radius: 8px; text-align: left;">
+        <h3>🔍 Real Price IDs (Just Created):</h3>
+        <p><strong>$19 Pack:</strong> price_1T57ZKAqx5KYvfYDHi6vcvvQ</p>
+        <p><strong>$39 Bundle:</strong> price_1T57ZLAqx5KYvfYD2pPT3Vbx</p>
+        <p><strong>Created:</strong> <?php echo date('Y-m-d H:i:s'); ?> (Now)</p>
+        <p><strong>Cache Bypass:</strong> v<?php echo time(); ?></p>
+    </div>
+
+    <script>
+        // Initialize Stripe with correct key
+        const stripe = Stripe('pk_live_51T2rWLAqx5KYvfYDe1RWou0AdmyWwxeDcrg3sR1iUKosTBM0XQzjFYtOBM25kaG8B86ps7A39xOnD4hgtHkJWObe00i8R1xuVf');
+        
+        function updateStatus(message, type = '') {
+            const status = document.getElementById('status');
+            status.innerHTML = '<strong>Status:</strong> ' + message;
+            status.className = 'status ' + type;
+            console.log('[Test]', message);
+        }
+
+        async function testPayment19() {
+            await testDirectPayment('price_1T57ZKAqx5KYvfYDHi6vcvvQ', '$19 AI Prompts Pack');
+        }
+
+        async function testPayment39() {
+            await testDirectPayment('price_1T57ZLAqx5KYvfYD2pPT3Vbx', '$39 AI Starter Bundle');
+        }
+
+        async function testDirectPayment(priceId, productName) {
+            updateStatus(`Testing ${productName}...`);
+            
+            try {
+                console.log('Starting checkout with price ID:', priceId);
+                
+                // Direct Stripe checkout - minimal parameters
+                const result = await stripe.redirectToCheckout({
+                    lineItems: [{
+                        price: priceId,
+                        quantity: 1
+                    }],
+                    mode: 'payment',
+                    successUrl: window.location.origin + '/success.html',
+                    cancelUrl: window.location.origin + '/cancel.html'
+                });
+
+                if (result.error) {
+                    updateStatus('❌ Stripe Error: ' + result.error.message, 'error');
+                    console.error('Stripe error:', result.error);
+                } else {
+                    updateStatus('✅ Redirecting to Stripe...', 'success');
+                }
+
+            } catch (error) {
+                updateStatus('❌ JavaScript Error: ' + error.message, 'error');
+                console.error('Checkout error:', error);
+            }
+        }
+
+        // Test Stripe loading
+        if (typeof Stripe === 'undefined') {
+            updateStatus('❌ Stripe.js failed to load', 'error');
+        } else {
+            updateStatus('✅ Stripe.js loaded, ready for testing', 'success');
+        }
+    </script>
+</body>
+</html>
