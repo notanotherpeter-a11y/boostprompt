@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment System Debug - BoostPrompt</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        body { font-family: system-ui; padding: 20px; background: #0a0a0c; color: white; }
+        .debug-card { background: #1a1a1a; padding: 20px; margin: 10px 0; border-radius: 8px; border: 1px solid #333; }
+        .success { border-color: #4CAF50; background: #0f2419; }
+        .error { border-color: #f44336; background: #2d0f0f; }
+        .warning { border-color: #ff9800; background: #2d1f0f; }
+        button { background: #ff6b35; color: white; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; margin: 10px 5px; font-size: 16px; }
+        button:hover { background: #e55a2b; }
+        .status { font-weight: bold; margin-bottom: 10px; }
+        pre { background: #000; padding: 10px; border-radius: 4px; overflow-x: auto; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <h1>🔧 BoostPrompt Payment System Debug</h1>
+    <p>This page will help identify why payments aren't working on your device.</p>
+
+    <div id="test-results"></div>
+
+    <h2>🧪 Test Buttons</h2>
+    <button onclick="testStripe()">Test Stripe Connection</button>
+    <button onclick="testPriceIDs()">Test Price IDs</button>
+    <button onclick="testDirectPayment()">Test $19 Payment</button>
+    <button onclick="testDeviceInfo()">Show Device Info</button>
+
+    <script>
+        const STRIPE_PK = 'pk_live_51T2rWLAqx5KYvfYDe1RWou0AdmyWwxeDcrg3sR1iUKosTBM0XQzjFYtOBM25kaG8B86ps7A39xOnD4hgtHkJWObe00i8R1xuVf';
+        const PRICE_IDS = {
+            'product1': 'price_1T3bDMAqx5KYvfYDr16bU0eS', // $19
+            'product2': 'price_1T3bCNAqx5KYvfYD3cWcXjc1'  // $39
+        };
+
+        function addResult(title, message, type = 'debug-card') {
+            const results = document.getElementById('test-results');
+            const card = document.createElement('div');
+            card.className = `debug-card ${type}`;
+            card.innerHTML = `
+                <div class="status">${title}</div>
+                <div>${message}</div>
+            `;
+            results.appendChild(card);
+        }
+
+        function testStripe() {
+            addResult('🔄 Testing Stripe.js...', 'Checking if Stripe loads properly');
+            
+            try {
+                if (typeof Stripe === 'undefined') {
+                    addResult('❌ Stripe.js Failed', 'Stripe.js is not loaded. This is the problem!', 'error');
+                    return;
+                }
+                
+                const stripe = Stripe(STRIPE_PK);
+                addResult('✅ Stripe.js Working', 'Stripe.js loaded successfully', 'success');
+                
+                // Test key validation
+                if (STRIPE_PK.includes('pk_live')) {
+                    addResult('✅ Live Key Detected', 'Using live Stripe key (good for production)', 'success');
+                } else {
+                    addResult('⚠️ Test Key Detected', 'Using test Stripe key', 'warning');
+                }
+                
+            } catch (error) {
+                addResult('❌ Stripe Error', `Stripe initialization failed: ${error.message}`, 'error');
+            }
+        }
+
+        function testPriceIDs() {
+            addResult('🔄 Testing Price IDs...', 'Checking if price IDs are valid');
+            
+            for (const [key, priceId] of Object.entries(PRICE_IDS)) {
+                if (priceId && priceId.startsWith('price_')) {
+                    addResult(`✅ ${key}`, `${priceId} - Format looks correct`, 'success');
+                } else {
+                    addResult(`❌ ${key}`, `${priceId} - Invalid format!`, 'error');
+                }
+            }
+        }
+
+        async function testDirectPayment() {
+            addResult('🔄 Testing Direct Payment...', 'Attempting to create Stripe checkout');
+            
+            try {
+                const stripe = Stripe(STRIPE_PK);
+                const priceId = PRICE_IDS.product1;
+                
+                addResult('📝 Payment Details', `
+                    Product: $19 AI Prompts Pack<br>
+                    Price ID: ${priceId}<br>
+                    Stripe Key: ${STRIPE_PK.substring(0, 20)}...
+                `);
+                
+                // This should redirect to Stripe
+                const { error } = await stripe.redirectToCheckout({
+                    lineItems: [{
+                        price: priceId,
+                        quantity: 1
+                    }],
+                    mode: 'payment',
+                    successUrl: `${window.location.origin}/success`,
+                    cancelUrl: `${window.location.origin}/cancel`,
+                    clientReferenceId: 'debug_test_' + Date.now()
+                });
+                
+                if (error) {
+                    addResult('❌ Stripe Checkout Failed', error.message, 'error');
+                } else {
+                    addResult('✅ Redirect Working', 'Should redirect to Stripe now...', 'success');
+                }
+                
+            } catch (error) {
+                addResult('❌ Payment Test Failed', `Error: ${error.message}`, 'error');
+            }
+        }
+
+        function testDeviceInfo() {
+            const info = {
+                'User Agent': navigator.userAgent,
+                'Platform': navigator.platform,
+                'Language': navigator.language,
+                'Cookie Enabled': navigator.cookieEnabled,
+                'Online': navigator.onLine,
+                'Screen': `${screen.width}x${screen.height}`,
+                'Viewport': `${window.innerWidth}x${window.innerHeight}`,
+                'URL': window.location.href,
+                'Referrer': document.referrer || 'None',
+                'JavaScript': 'Enabled ✅',
+                'Local Storage': typeof(Storage) !== "undefined" ? 'Available ✅' : 'Not Available ❌',
+                'Stripe.js': typeof Stripe !== 'undefined' ? 'Loaded ✅' : 'Not Loaded ❌'
+            };
+            
+            let deviceDetails = '';
+            for (const [key, value] of Object.entries(info)) {
+                deviceDetails += `<strong>${key}:</strong> ${value}<br>`;
+            }
+            
+            addResult('📱 Device Information', deviceDetails);
+        }
+
+        // Auto-run basic tests
+        window.addEventListener('load', () => {
+            addResult('🚀 Debug Session Started', `${new Date().toLocaleString()}`);
+            setTimeout(() => {
+                testStripe();
+                testPriceIDs();
+                testDeviceInfo();
+            }, 500);
+        });
+
+        // Test if main site functions exist
+        setTimeout(() => {
+            if (typeof buyAIPromptsPack !== 'undefined') {
+                addResult('✅ Main Site Functions', 'buyAIPromptsPack() function exists', 'success');
+            } else {
+                addResult('❌ Main Site Functions', 'buyAIPromptsPack() function missing - this is likely the problem!', 'error');
+            }
+        }, 1000);
+        
+    </script>
+</body>
+</html>
