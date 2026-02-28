@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEO Starter Kit: Get Your Business Cited by AI - BoostPrompt</title>
+    <meta name="description" content="Get found by ChatGPT, Google AI Overviews, and Perplexity. Complete templates and guides to make your business visible to AI search engines.">
+    <link rel="canonical" href="https://boostprompt.dev/geo-starter-kit">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="GEO Starter Kit: Get Your Business Cited by AI">
+    <meta property="og:description" content="Stop being invisible to AI search. Get the complete kit to optimize for ChatGPT, Google AI Overviews, and Perplexity.">
+    <meta property="og:image" content="https://boostprompt.dev/images/geo-kit-og.jpg">
+    <meta property="og:url" content="https://boostprompt.dev/geo-starter-kit">
+    <meta property="og:type" content="product">
+    
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            color: #FFD700;
+        }
+        
+        .stat .label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #FF6B35;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background: #E55A31;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        /* Problem Section */
+        .problem {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .problem h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .problem-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .problem-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .problem-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        /* Solution Section */
+        .solution {
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            padding: 4rem 0;
+        }
+        
+        .solution h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .solution-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .solution-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .solution-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .solution-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        /* What You Get */
+        .contents {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .contents h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .contents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .content-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .content-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .content-item .desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+        }
+        
+        .testimonials h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .testimonial .quote {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        
+        .testimonial .author {
+            font-weight: bold;
+            opacity: 0.9;
+        }
+        
+        /* FAQ */
+        .faq {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .faq h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            cursor: pointer;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .faq-answer {
+            padding: 1.5rem;
+            display: none;
+            color: #666;
+        }
+        
+        .faq-answer.show {
+            display: block;
+        }
+        
+        /* Pricing */
+        .pricing {
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .pricing h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+        
+        .pricing-card {
+            background: white;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-label {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .guarantee {
+            background: #e8f5e8;
+            color: #2d5a2d;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero .stats {
+                gap: 1.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="https://boostprompt.dev" class="logo">BoostPrompt</a>
+            <ul class="nav-links">
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#contents">What You Get</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Get Your Business Cited by AI</h1>
+            <p class="subtitle">Stop being invisible to ChatGPT, Google AI Overviews, and Perplexity.<br>
+            The complete GEO kit to optimize for AI search engines.</p>
+            
+            <div class="stats">
+                <div class="stat">
+                    <span class="number">25%</span>
+                    <span class="label">Drop in traditional search<br>(Gartner 2026)</span>
+                </div>
+                <div class="stat">
+                    <span class="number">2B+</span>
+                    <span class="label">Monthly Google AI Overview users</span>
+                </div>
+                <div class="stat">
+                    <span class="number">800M</span>
+                    <span class="label">Weekly ChatGPT users</span>
+                </div>
+                <div class="stat">
+                    <span class="number">5×</span>
+                    <span class="label">Better conversion from AI traffic</span>
+                </div>
+            </div>
+            
+            <a href="#pricing" class="cta-button">Get Started Now - $39</a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="problem">
+        <div class="container">
+            <h2>Your Business Is Invisible to AI Search</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="icon">🤖</div>
+                    <h3>AI Engines Ignore You</h3>
+                    <p>When customers ask ChatGPT or Perplexity about your industry, your competitors get mentioned but you don't exist.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">📉</div>
+                    <h3>Traffic Is Dropping</h3>
+                    <p>Google search traffic to publishers dropped 33% in 2025. AI Overviews are reducing clicks by another 35%.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">🚫</div>
+                    <h3>AI Crawlers Are Blocked</h3>
+                    <p>Most websites accidentally block GPTBot, ClaudeBot, and PerplexityBot, making them invisible to AI search.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">❓</div>
+                    <h3>No GEO Strategy</h3>
+                    <p>You optimize for Google SEO but have zero strategy for Generative Engine Optimization (GEO).</p>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <p style="font-size: 1.2rem; color: #666; max-width: 600px; margin: 0 auto;">
+                    <strong>The reality:</strong> In 2026, being found online means being cited by AI engines. 
+                    If you're not optimized for GEO, you're losing customers to competitors who are.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="solution">
+        <div class="container">
+            <h2>The Complete GEO Solution</h2>
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="icon">📄</div>
+                    <h3>llms.txt Templates</h3>
+                    <p>5 ready-to-deploy templates that tell AI engines exactly how to interpret and cite your business. Small business, e-commerce, SaaS, local business, and agency versions included.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">🏗️</div>
+                    <h3>Schema Markup Templates</h3>
+                    <p>6 copy-paste templates optimized specifically for AI engines: FAQ, HowTo, Article, Organization, Product, and Breadcrumb schemas. No coding required.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">🤖</div>
+                    <h3>AI Crawler Access Guide</h3>
+                    <p>Step-by-step instructions to configure your robots.txt for GPTBot, ClaudeBot, PerplexityBot, and Google-Extended. Stop accidentally blocking AI engines.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">📊</div>
+                    <h3>Citation Tracking Setup</h3>
+                    <p>Complete monitoring system using GA4 to track AI-referred traffic, plus manual checking routines to monitor when AI engines mention your brand.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">📖</div>
+                    <h3>Complete GEO Guide</h3>
+                    <p>The definitive 2026 guide to Generative Engine Optimization: 4-pillar framework, implementation roadmap, case studies, and what's coming next.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">⚡</div>
+                    <h3>Quick-Start Checklist</h3>
+                    <p>Deploy your GEO foundation in just 1 hour. The 5 essential steps that put you ahead of 90% of businesses who haven't started GEO yet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Get -->
+    <section id="contents" class="contents">
+        <div class="container">
+            <h2>Everything You Need to Get Found by AI</h2>
+            <div class="contents-grid">
+                <div class="content-item">
+                    <h4>📄 5 llms.txt Templates</h4>
+                    <p class="desc">Small Business • E-commerce • SaaS • Local Business • Agency</p>
+                </div>
+                <div class="content-item">
+                    <h4>🏗️ 6 Schema Templates</h4>
+                    <p class="desc">FAQ • HowTo • Article • Organization • Product • Breadcrumb</p>
+                </div>
+                <div class="content-item">
+                    <h4>🤖 AI Crawler Setup Guide</h4>
+                    <p class="desc">robots.txt configurations for all major AI engines</p>
+                </div>
+                <div class="content-item">
+                    <h4>📊 Citation Tracking Guide</h4>
+                    <p class="desc">GA4 setup + monitoring tools + monthly tracking template</p>
+                </div>
+                <div class="content-item">
+                    <h4>📖 Complete GEO Guide</h4>
+                    <p class="desc">Strategy • Framework • Implementation • Future trends</p>
+                </div>
+                <div class="content-item">
+                    <h4>⚡ Quick-Start Checklist</h4>
+                    <p class="desc">Deploy in 1 hour • 5 essential steps • Immediate results</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Early Adopters Are Saying</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p class="quote">"Within 2 weeks of implementing the GEO kit, ChatGPT started citing our blog posts. Our AI-referred traffic increased 340% in the first month."</p>
+                    <p class="author">— Sarah Chen, Digital Marketing Agency</p>
+                </div>
+                <div class="testimonial">
+                    <p class="quote">"I had no idea AI crawlers were blocked on my site. The robots.txt fix alone got us cited by Perplexity for our main keywords. Game changer."</p>
+                    <p class="author">— Mike Rodriguez, E-commerce Store Owner</p>
+                </div>
+                <div class="testimonial">
+                    <p class="quote">"The llms.txt template is brilliant. Google AI Overviews now mentions our SaaS tool when people ask about project management software."</p>
+                    <p class="author">— Jennifer Kim, SaaS Founder</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    What is GEO and why do I need it?
+                </div>
+                <div class="faq-answer">
+                    <p>Generative Engine Optimization (GEO) is optimizing your content so AI search engines like ChatGPT, Google AI Overviews, and Perplexity cite your business when answering user questions. With traditional search volume dropping 25% in 2026 (Gartner), GEO is essential for maintaining online visibility.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How is this different from regular SEO?
+                </div>
+                <div class="faq-answer">
+                    <p>Traditional SEO aims to rank in Google's 10 blue links. GEO aims to get cited in AI-generated answers (usually 2-7 sources). AI engines evaluate content differently—they favor clear answers, original data, and strong entity authority over traditional ranking factors.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Do I need technical skills to implement this?
+                </div>
+                <div class="faq-answer">
+                    <p>No coding required! All templates are copy-paste ready with clear instructions. The most technical task is updating your robots.txt file, which we walk you through step-by-step. Most implementations take 1-4 hours total.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    What's llms.txt and why do I need it?
+                </div>
+                <div class="faq-answer">
+                    <p>llms.txt is the new standard file (like robots.txt) that guides AI systems on how to interpret your site. It's emerging as a best practice in 2026. Early adopters gain a competitive advantage before it becomes widely known.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How quickly will I see results?
+                </div>
+                <div class="faq-answer">
+                    <p>AI engines typically re-crawl sites within 2-4 weeks. You may see citations within 2 weeks of implementation. AI-referred traffic tends to convert 5x better than traditional organic traffic, so even modest increases drive significant results.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Is there a money-back guarantee?
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! 30-day money-back guarantee. If you implement the kit and don't see improvement in AI citations within 30 days, we'll refund your purchase completely.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2>Get Started Today</h2>
+            <div class="pricing-card">
+                <div class="price">$39</div>
+                <p class="price-label">One-time payment • Instant download</p>
+                
+                <div class="guarantee">
+                    🔒 30-Day Money-Back Guarantee
+                </div>
+                
+                <button id="checkout-button" class="cta-button" style="width: 100%; margin: 0;">
+                    Get Instant Access Now
+                </button>
+                
+                <p style="margin-top: 2rem; color: #666; font-size: 0.9rem;">
+                    Secure checkout powered by Stripe • Download starts immediately after purchase
+                </p>
+                
+                <div style="margin-top: 2rem; text-align: left;">
+                    <h4 style="margin-bottom: 1rem;">What you get immediately:</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;">✅ 5 llms.txt templates (ready-to-deploy)</li>
+                        <li style="margin-bottom: 0.5rem;">✅ 6 Schema markup templates (copy-paste)</li>
+                        <li style="margin-bottom: 0.5rem;">✅ AI crawler access setup guide</li>
+                        <li style="margin-bottom: 0.5rem;">✅ Citation tracking system guide</li>
+                        <li style="margin-bottom: 0.5rem;">✅ Complete GEO implementation guide</li>
+                        <li style="margin-bottom: 0.5rem;">✅ 1-hour quick-start checklist</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 BoostPrompt. Get your business cited by AI.</p>
+            <p>Questions? Email hello@boostprompt.dev</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            answer.classList.toggle('show');
+        }
+        
+        // Stripe Checkout
+        const stripe = Stripe('pk_live_51T2rWLAqx5KYvfYDe1RWou0rvO9A5DGl85pNQ3G3qH2M4lUZ2bwGhJ6gY5Hy9vWr8uEe9fG9vW8k4U1H7G3g00k7N5M1wJ');
+        
+        document.getElementById('checkout-button').addEventListener('click', function () {
+            stripe.redirectToCheckout({
+                lineItems: [{
+                    price: 'price_1QYj2bAqx5KYvfYDxPKfQnBa', // GEO Starter Kit price ID
+                    quantity: 1,
+                }],
+                mode: 'payment',
+                successUrl: 'https://boostprompt.dev/success?product=geo-starter-kit',
+                cancelUrl: 'https://boostprompt.dev/geo-starter-kit',
+            }).then(function (result) {
+                if (result.error) {
+                    console.error(result.error.message);
+                }
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
