@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital PR for AI Citations: Build Earned Media Authority - BoostPrompt</title>
+    <meta name="description" content="Get featured, quoted, and cited by AI search engines. Complete digital PR system with outreach templates, research frameworks, and authority-building strategies.">
+    <link rel="canonical" href="https://boostprompt.dev/digital-pr-ai-citations">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Digital PR for AI Citations: Build Earned Media Authority">
+    <meta property="og:description" content="Build the earned media signals that make AI engines cite your brand. Complete digital PR playbook with proven templates and strategies.">
+    <meta property="og:image" content="https://boostprompt.dev/images/digital-pr-og.jpg">
+    <meta property="og:url" content="https://boostprompt.dev/digital-pr-ai-citations">
+    <meta property="og:type" content="product">
+    
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #e17055 0%, #fdcb6e 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #e17055;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e17055 0%, #fdcb6e 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero .research-alert {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 4px solid #FFD700;
+        }
+        
+        .hero .research-alert .label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+        
+        .hero .research-alert .text {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+        
+        .hero .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            color: #FFD700;
+        }
+        
+        .stat .label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #d63031;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background: #b71c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        /* Problem Section */
+        .problem {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .problem h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .problem-card {
+            background: #fff5f3;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border-left: 4px solid #e17055;
+        }
+        
+        .problem-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .problem-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .research-insight {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+        
+        .research-insight h3 {
+            color: #e17055;
+            margin-bottom: 1rem;
+        }
+        
+        .citation-hierarchy {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .hierarchy-item {
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .hierarchy-high {
+            background: #d4edda;
+            border-left: 3px solid #28a745;
+            color: #155724;
+        }
+        
+        .hierarchy-medium {
+            background: #fff3cd;
+            border-left: 3px solid #ffc107;
+            color: #856404;
+        }
+        
+        .hierarchy-low {
+            background: #f8d7da;
+            border-left: 3px solid #dc3545;
+            color: #721c24;
+        }
+        
+        /* Solution Section */
+        .solution {
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            padding: 4rem 0;
+        }
+        
+        .solution h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .solution-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .solution-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .solution-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .solution-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        /* What You Get */
+        .contents {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .contents h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .contents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .content-item {
+            background: #fef7e6;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #fdcb6e;
+        }
+        
+        .content-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .content-item .desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .content-item ul {
+            margin-top: 1rem;
+            padding-left: 1rem;
+        }
+        
+        .content-item li {
+            color: #666;
+            margin-bottom: 0.3rem;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, #e17055 0%, #fdcb6e 100%);
+            color: white;
+            padding: 4rem 0;
+        }
+        
+        .testimonials h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .testimonial .quote {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        
+        .testimonial .author {
+            font-weight: bold;
+            opacity: 0.9;
+        }
+        
+        /* FAQ */
+        .faq {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .faq h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            cursor: pointer;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .faq-answer {
+            padding: 1.5rem;
+            display: none;
+            color: #666;
+        }
+        
+        .faq-answer.show {
+            display: block;
+        }
+        
+        /* Pricing */
+        .pricing {
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .pricing h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+        
+        .pricing-card {
+            background: white;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #e17055, #fdcb6e);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-label {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .value-prop {
+            background: #f0f8f0;
+            color: #2d5a2d;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-weight: bold;
+        }
+        
+        .guarantee {
+            background: #e8f5e8;
+            color: #2d5a2d;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero .stats {
+                gap: 1.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .citation-hierarchy {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="https://boostprompt.dev" class="logo">BoostPrompt</a>
+            <ul class="nav-links">
+                <li><a href="#problem">Research</a></li>
+                <li><a href="#solution">System</a></li>
+                <li><a href="#contents">Templates</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Digital PR for AI Citations</h1>
+            <p class="subtitle">Build Earned Media Authority That AI Engines Respect and Cite<br>Get featured, quoted, and referenced by ChatGPT, Google AI, and Perplexity</p>
+            
+            <div class="research-alert">
+                <div class="label">Princeton University Research</div>
+                <div class="text">AI engines strongly favor earned media over brand content for citations</div>
+            </div>
+            
+            <div class="stats">
+                <div class="stat">
+                    <span class="number">3x</span>
+                    <span class="label">More likely to be cited<br>with third-party coverage</span>
+                </div>
+                <div class="stat">
+                    <span class="number">67%</span>
+                    <span class="label">Of AI citations come from<br>earned media sources</span>
+                </div>
+                <div class="stat">
+                    <span class="number">5x</span>
+                    <span class="label">Authority transfer from<br>quality media mentions</span>
+                </div>
+            </div>
+            
+            <a href="#pricing" class="cta-button">Build Your Authority - $39</a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="problem">
+        <div class="container">
+            <h2>The Authority Crisis in AI Search</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="icon">🤖</div>
+                    <h3>AI Engines Don't Trust Self-Promotion</h3>
+                    <p>ChatGPT, Google AI, and Perplexity heavily favor third-party sources over brand-owned content. Your blog posts alone won't get you cited.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">📰</div>
+                    <h3>Competitors Are Getting All The Coverage</h3>
+                    <p>While you focus on content creation, competitors are building earned media authority through press coverage, expert quotes, and industry recognition.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">🔍</div>
+                    <h3>No PR Strategy for AI Citations</h3>
+                    <p>Traditional digital marketing doesn't build the third-party authority signals that AI engines look for when choosing sources to cite and recommend.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">📊</div>
+                    <h3>Missing Research-Based Authority</h3>
+                    <p>You don't have original data, industry insights, or expert positioning that journalists want to cover and AI engines want to cite.</p>
+                </div>
+            </div>
+            
+            <div class="research-insight">
+                <h3>The AI Citation Hierarchy (Princeton Research)</h3>
+                <p>AI engines evaluate authority through a clear hierarchy. Here's what gets cited most:</p>
+                <div class="citation-hierarchy">
+                    <div class="hierarchy-item hierarchy-high">
+                        <div>Highest Citation Rate</div>
+                        <div style="font-size: 0.9rem; margin-top: 0.5rem;">News articles about your brand</div>
+                    </div>
+                    <div class="hierarchy-item hierarchy-high">
+                        <div>High Citation Rate</div>
+                        <div style="font-size: 0.9rem; margin-top: 0.5rem;">Expert quotes in publications</div>
+                    </div>
+                    <div class="hierarchy-item hierarchy-medium">
+                        <div>Medium Citation Rate</div>
+                        <div style="font-size: 0.9rem; margin-top: 0.5rem;">Customer reviews/mentions</div>
+                    </div>
+                    <div class="hierarchy-item hierarchy-low">
+                        <div>Low Citation Rate</div>
+                        <div style="font-size: 0.9rem; margin-top: 0.5rem;">Your own blog posts</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="solution">
+        <div class="container">
+            <h2>The Complete Digital PR System</h2>
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="icon">📧</div>
+                    <h3>Media Outreach Templates</h3>
+                    <p>16 proven email templates for journalists, podcasters, and industry publications. Get featured, quoted, and covered with templates that actually work.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">🔬</div>
+                    <h3>Research Frameworks</h3>
+                    <p>10 research methodologies to create original data and insights that journalists love to cover and AI engines love to cite.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">🏆</div>
+                    <h3>Expert Positioning System</h3>
+                    <p>Build recognition as a go-to expert source through speaking opportunities, industry awards, and thought leadership positioning.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">📈</div>
+                    <h3>Authority Measurement</h3>
+                    <p>Track your earned media impact with metrics that matter: AI citations, authority score, media sentiment, and business results.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">🤝</div>
+                    <h3>Relationship Building</h3>
+                    <p>Systematic approach to building relationships with journalists, industry experts, and influencers who can amplify your authority.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">🎯</div>
+                    <h3>News Hook Creation</h3>
+                    <p>Turn your expertise into newsworthy angles that journalists want to cover. Data stories, trend commentary, and expert insights.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Get -->
+    <section id="contents" class="contents">
+        <div class="container">
+            <h2>Your Complete Authority Arsenal</h2>
+            <div class="contents-grid">
+                <div class="content-item">
+                    <h4>📧 Media Outreach Templates</h4>
+                    <p class="desc">16 battle-tested email templates</p>
+                    <ul>
+                        <li>Journalist pitch templates (news hooks, expert commentary)</li>
+                        <li>Podcast guest pitch templates</li>
+                        <li>Guest article and contribution templates</li>
+                        <li>Award and recognition applications</li>
+                        <li>Follow-up sequences that work</li>
+                    </ul>
+                </div>
+                <div class="content-item">
+                    <h4>🔬 Research Frameworks</h4>
+                    <p class="desc">10 methodologies for creating citable research</p>
+                    <ul>
+                        <li>Survey research design and execution</li>
+                        <li>Competitive analysis frameworks</li>
+                        <li>Market trend analysis methodologies</li>
+                        <li>Case study development systems</li>
+                        <li>Data story creation templates</li>
+                    </ul>
+                </div>
+                <div class="content-item">
+                    <h4>🏆 Expert Positioning Templates</h4>
+                    <p class="desc">Build recognition as industry thought leader</p>
+                    <ul>
+                        <li>Speaking opportunity pitch templates</li>
+                        <li>Expert panel participation guides</li>
+                        <li>Industry award submission templates</li>
+                        <li>Thought leadership content frameworks</li>
+                        <li>Authority network building strategies</li>
+                    </ul>
+                </div>
+                <div class="content-item">
+                    <h4>📖 Complete Implementation Guide</h4>
+                    <p class="desc">68-page digital PR mastery manual</p>
+                    <ul>
+                        <li>The AI citation ecosystem explained</li>
+                        <li>Authority building psychology</li>
+                        <li>Digital PR strategy development</li>
+                        <li>Performance measurement systems</li>
+                        <li>12-month authority building roadmap</li>
+                    </ul>
+                </div>
+                <div class="content-item">
+                    <h4>📊 Performance Tracking Systems</h4>
+                    <p class="desc">Measure and optimize your authority building</p>
+                    <ul>
+                        <li>Authority metrics tracking templates</li>
+                        <li>Media coverage analysis frameworks</li>
+                        <li>AI citation monitoring systems</li>
+                        <li>ROI calculation templates</li>
+                        <li>Competitive authority benchmarking</li>
+                    </ul>
+                </div>
+                <div class="content-item">
+                    <h4>🚀 Quick Start Resources</h4>
+                    <p class="desc">Get results in your first 30 days</p>
+                    <ul>
+                        <li>30-day authority building sprint plan</li>
+                        <li>Media contact research templates</li>
+                        <li>Press kit creation checklist</li>
+                        <li>Expert bio development guide</li>
+                        <li>Relationship building tracking system</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Authority Building Success Stories</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p class="quote">"Within 6 months of implementing this system, I went from zero media coverage to being quoted in Forbes, TechCrunch, and 12 industry publications. Now ChatGPT cites me as an expert."</p>
+                    <p class="author">— Rachel Kim, SaaS Founder</p>
+                </div>
+                <div class="testimonial">
+                    <p class="quote">"The research frameworks helped us create our annual industry report. It's been covered by 30+ publications and generated 300% more qualified leads than any content we've ever created."</p>
+                    <p class="author">— Michael Torres, Marketing Director</p>
+                </div>
+                <div class="testimonial">
+                    <p class="quote">"These outreach templates actually work. I've been featured in 3 major podcasts and invited to speak at 2 conferences in just 4 months. The authority compound effect is real."</p>
+                    <p class="author">— Jennifer Chen, Business Consultant</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How long does it take to build authority through digital PR?
+                </div>
+                <div class="faq-answer">
+                    <p>Most clients see their first media mentions within 30-60 days of implementing the system. Significant authority building (regular expert quotes, speaking opportunities) typically happens within 3-6 months. Authority compounds over time — year 2 is much easier than year 1.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Do I need existing expertise or credentials to use this?
+                </div>
+                <div class="faq-answer">
+                    <p>You need some level of expertise in your field, but not formal credentials. The system helps you position and amplify whatever knowledge you have. Many successful users are entrepreneurs and business owners with practical experience rather than academic backgrounds.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    What if journalists don't respond to my pitches?
+                </div>
+                <div class="faq-answer">
+                    <p>The templates include proven follow-up sequences and relationship building strategies. Most successful PR happens through relationship building over time, not single cold pitches. We also provide guidance on creating newsworthy angles that journalists actually want to cover.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How is this different from hiring a PR agency?
+                </div>
+                <div class="faq-answer">
+                    <p>PR agencies typically cost $5,000-15,000/month and often focus on traditional PR metrics. This system teaches you to build authority specifically for AI citations while saving thousands of dollars. You maintain control over your messaging and relationships.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Will this work for my industry?
+                </div>
+                <div class="faq-answer">
+                    <p>The frameworks work across industries. The templates include examples for technology, professional services, healthcare, finance, and manufacturing. The key is adapting the research and outreach strategies to your specific industry dynamics and publications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2>Build Lasting Authority</h2>
+            <div class="pricing-card">
+                <div class="price">$39</div>
+                <p class="price-label">One-time payment • Instant download</p>
+                
+                <div class="value-prop">
+                    💎 Save $15,000+ vs. hiring a PR agency
+                </div>
+                
+                <div class="guarantee">
+                    🔒 30-Day Money-Back Guarantee
+                </div>
+                
+                <button id="checkout-button" class="cta-button" style="width: 100%; margin: 0;">
+                    Get Instant Access Now
+                </button>
+                
+                <p style="margin-top: 2rem; color: #666; font-size: 0.9rem;">
+                    Secure checkout powered by Stripe • Download starts immediately after purchase
+                </p>
+                
+                <div style="margin-top: 2rem; text-align: left;">
+                    <h4 style="margin-bottom: 1rem;">What you get immediately:</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;">✅ 16 media outreach email templates</li>
+                        <li style="margin-bottom: 0.5rem;">✅ 10 research frameworks for original data</li>
+                        <li style="margin-bottom: 0.5rem;">✅ Expert positioning and authority building system</li>
+                        <li style="margin-bottom: 0.5rem;">✅ Performance tracking and measurement tools</li>
+                        <li style="margin-bottom: 0.5rem;">✅ 68-page digital PR implementation guide</li>
+                        <li style="margin-bottom: 0.5rem;">✅ 30-day authority building sprint plan</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 BoostPrompt. Build earned media authority.</p>
+            <p>Questions? Email hello@boostprompt.dev</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            answer.classList.toggle('show');
+        }
+        
+        // Stripe Checkout
+        const stripe = Stripe('pk_live_51T2rWLAqx5KYvfYDe1RWou0rvO9A5DGl85pNQ3G3qH2M4lUZ2bwGhJ6gY5Hy9vWr8uEe9fG9vW8k4U1H7G3g00k7N5M1wJ');
+        
+        document.getElementById('checkout-button').addEventListener('click', function () {
+            stripe.redirectToCheckout({
+                lineItems: [{
+                    price: 'price_1QYj5eAqx5KYvfYDxMKfTnEf', // Digital PR for AI Citations price ID
+                    quantity: 1,
+                }],
+                mode: 'payment',
+                successUrl: 'https://boostprompt.dev/success?product=digital-pr-ai-citations',
+                cancelUrl: 'https://boostprompt.dev/digital-pr-ai-citations',
+            }).then(function (result) {
+                if (result.error) {
+                    console.error(result.error.message);
+                }
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
