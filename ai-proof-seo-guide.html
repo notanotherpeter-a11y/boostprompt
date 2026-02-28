@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Proof Your SEO: 2026 Survival Guide - BoostPrompt</title>
+    <meta name="description" content="Survive Google algorithm updates and thrive in the AI search era. Complete guide with recovery strategies, content optimization, and future-proofing tactics.">
+    <link rel="canonical" href="https://boostprompt.dev/ai-proof-seo-guide">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="AI-Proof Your SEO: 2026 Survival Guide">
+    <meta property="og:description" content="Build algorithm-resistant SEO strategies that survive Google updates and thrive in the AI search era.">
+    <meta property="og:image" content="https://boostprompt.dev/images/seo-guide-og.jpg">
+    <meta property="og:url" content="https://boostprompt.dev/ai-proof-seo-guide">
+    <meta property="og:type" content="product">
+    
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffa726 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffa726 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero .urgent {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 4px solid #FFD700;
+        }
+        
+        .hero .urgent .label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+        
+        .hero .urgent .text {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+        
+        .hero .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            color: #FFD700;
+        }
+        
+        .stat .label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        /* Problem Section */
+        .problem {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .problem h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .problem-card {
+            background: #fff5f5;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .problem-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .problem-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .timeline {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+        
+        .timeline h3 {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        .timeline-item .date {
+            font-weight: bold;
+            color: #ff6b6b;
+            min-width: 120px;
+        }
+        
+        /* Solution Section */
+        .solution {
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            padding: 4rem 0;
+        }
+        
+        .solution h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .solution-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .solution-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .solution-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .solution-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        /* What You Get */
+        .contents {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .contents h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .contents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .content-item {
+            background: #fff9f0;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #ffa726;
+        }
+        
+        .content-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .content-item .desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .content-item ul {
+            margin-top: 1rem;
+            padding-left: 1rem;
+        }
+        
+        .content-item li {
+            color: #666;
+            margin-bottom: 0.3rem;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffa726 100%);
+            color: white;
+            padding: 4rem 0;
+        }
+        
+        .testimonials h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .testimonial .quote {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        
+        .testimonial .author {
+            font-weight: bold;
+            opacity: 0.9;
+        }
+        
+        /* FAQ */
+        .faq {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .faq h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            cursor: pointer;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .faq-answer {
+            padding: 1.5rem;
+            display: none;
+            color: #666;
+        }
+        
+        .faq-answer.show {
+            display: block;
+        }
+        
+        /* Pricing */
+        .pricing {
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .pricing h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+        
+        .pricing-card {
+            background: white;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #ffa726);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-label {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .value-prop {
+            background: #f0f8f0;
+            color: #2d5a2d;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-weight: bold;
+        }
+        
+        .guarantee {
+            background: #e8f5e8;
+            color: #2d5a2d;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero .stats {
+                gap: 1.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="https://boostprompt.dev" class="logo">BoostPrompt</a>
+            <ul class="nav-links">
+                <li><a href="#problem">Crisis</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#contents">What You Get</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>AI-Proof Your SEO:<br>2026 Survival Guide</h1>
+            <p class="subtitle">Build algorithm-resistant SEO strategies that survive Google updates<br>and thrive in the AI search era</p>
+            
+            <div class="urgent">
+                <div class="label">Algorithm Crisis Alert</div>
+                <div class="text">Google's 2025 updates crushed websites using generic, low-effort content. Don't let your site be next.</div>
+            </div>
+            
+            <div class="stats">
+                <div class="stat">
+                    <span class="number">4</span>
+                    <span class="label">Major Google updates<br>in 2025 alone</span>
+                </div>
+                <div class="stat">
+                    <span class="number">33%</span>
+                    <span class="label">Traffic drop to publishers<br>(2025 data)</span>
+                </div>
+                <div class="stat">
+                    <span class="number">85%</span>
+                    <span class="label">Sites hit by engagement<br>ranking factors</span>
+                </div>
+            </div>
+            
+            <a href="#pricing" class="cta-button">Get the Survival Guide - $29</a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="problem">
+        <div class="container">
+            <h2>The SEO Algorithm Crisis of 2025</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="icon">📉</div>
+                    <h3>Mass Traffic Casualties</h3>
+                    <p>Sites lost 20-80% of organic traffic overnight. AI-generated content got hit hardest, but even human content without proper optimization suffered.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">🤖</div>
+                    <h3>AI Content Crackdown</h3>
+                    <p>Google's spam updates specifically targeted low-effort AI content. Sites using AI without human expertise layer got penalized heavily.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">👥</div>
+                    <h3>Engagement Becomes Ranking Factor</h3>
+                    <p>December 2025 update made user engagement a direct ranking signal. High bounce rates and low dwell time = ranking drops.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">🏆</div>
+                    <h3>Authority or Invisibility</h3>
+                    <p>Only content with clear expertise, authorship, and first-hand experience survived. Generic content disappeared from search results.</p>
+                </div>
+            </div>
+            
+            <div class="timeline">
+                <h3>2025 Algorithm Timeline — The Year SEO Changed Forever</h3>
+                <div class="timeline-item">
+                    <div class="date">March 2025</div>
+                    <div>Core Update emphasizing author expertise and source credibility</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="date">June 2025</div>
+                    <div>Spam Update targeting link manipulation and doorway pages</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="date">August 2025</div>
+                    <div>Major AI content crackdown — mass-produced content penalized</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="date">December 2025</div>
+                    <div>Game-changing update making user engagement a direct ranking factor</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="solution">
+        <div class="container">
+            <h2>The Algorithm-Resistant SEO System</h2>
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="icon">⚡</div>
+                    <h3>Emergency Recovery Protocol</h3>
+                    <p>24-hour action plan for algorithm hits. Immediate damage control, rapid fixes, and systematic recovery strategies that work.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">👨‍💼</div>
+                    <h3>E-E-A-T Optimization System</h3>
+                    <p>Complete templates for building Experience, Expertise, Authoritativeness, and Trustworthiness signals that algorithms respect.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">📊</div>
+                    <h3>Engagement Optimization Framework</h3>
+                    <p>Proven strategies to boost user engagement metrics that are now direct ranking factors. Keep users on your pages longer.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">🛡️</div>
+                    <h3>AI-Proof Content Formula</h3>
+                    <p>The HEART method for creating content that survives algorithm updates. Human expertise + AI assistance = algorithm resistance.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">🔮</div>
+                    <h3>Future-Proofing Strategies</h3>
+                    <p>Diversify beyond Google with AI search optimization (GEO), voice search, and multi-platform visibility strategies.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">📈</div>
+                    <h3>Recovery Monitoring System</h3>
+                    <p>Track your recovery progress with the right metrics, identify what's working, and scale successful optimizations across your site.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Get -->
+    <section id="contents" class="contents">
+        <div class="container">
+            <h2>Your Complete Algorithm Survival Kit</h2>
+            <div class="contents-grid">
+                <div class="content-item">
+                    <h4>⚡ Algorithm Recovery Playbook</h4>
+                    <p class="desc">Emergency action plan for when updates hit</p>
+                    <ul>
+                        <li>24-hour emergency protocol</li>
+                        <li>30-day systematic recovery plan</li>
+                        <li>Damage assessment frameworks</li>
+                        <li>Quick-win triage strategies</li>
+                    </ul>
+                </div>
+                <div class="content-item">
+                    <h4>🤖 AI Content Quality Checklist</h4>
+                    <p class="desc">Create content that survives algorithm scrutiny</p>
+                    <ul>
+                        <li>AI content red flag detector</li>
+                        <li>Human experience integration formulas</li>
+                        <li>Content scoring system (1-5 scale)</li>
+                        <li>Enhancement workflow templates</li>
+                    </ul>
+                </div>
+                <div class="content-item">
+                    <h4>🏆 E-E-A-T Optimization Templates</h4>
+                    <p class="desc">Build unshakeable authority and trust</p>
+                    <ul>
+                        <li>Author bio templates (3 levels of authority)</li>
+                        <li>About page frameworks</li>
+                        <li>Expertise demonstration templates</li>
+                        <li>Trust signal checklists</li>
+                    </ul>
+                </div>
+                <div class="content-item">
+                    <h4>📊 Engagement Optimization Strategies</h4>
+                    <p class="desc">Master the new ranking factors</p>
+                    <ul>
+                        <li>15-second hook formulas</li>
+                        <li>Mobile engagement optimization</li>
+                        <li>Interactive content strategies</li>
+                        <li>Internal linking for engagement</li>
+                    </ul>
+                </div>
+                <div class="content-item">
+                    <h4>📖 Complete Implementation Guide</h4>
+                    <p class="desc">74-page comprehensive strategy manual</p>
+                    <ul>
+                        <li>Algorithm-resistant content framework</li>
+                        <li>Technical SEO for algorithm resistance</li>
+                        <li>Future-proofing strategies</li>
+                        <li>Week-by-week implementation roadmap</li>
+                    </ul>
+                </div>
+                <div class="content-item">
+                    <h4>✅ Quick Reference Checklists</h4>
+                    <p class="desc">Never miss a critical optimization</p>
+                    <ul>
+                        <li>Pre-publishing content checklist</li>
+                        <li>Algorithm hit recovery checklist</li>
+                        <li>Monthly audit checklists</li>
+                        <li>Technical optimization checklists</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Recovery Success Stories</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p class="quote">"Lost 60% of traffic in the December update. This guide's recovery protocol got us back to 90% of original traffic in 6 weeks. The E-E-A-T templates were game-changers."</p>
+                    <p class="author">— Marcus Chen, SaaS Marketing Director</p>
+                </div>
+                <div class="testimonial">
+                    <p class="quote">"Finally understood why our AI-generated content got hit. The content enhancement workflow helped us fix 200+ articles. Rankings recovered and then exceeded previous levels."</p>
+                    <p class="author">— Lisa Rodriguez, Content Marketing Agency</p>
+                </div>
+                <div class="testimonial">
+                    <p class="quote">"The engagement optimization strategies alone increased our average time on page by 180%. Rankings followed within 3 weeks. This is the real deal."</p>
+                    <p class="author">— David Park, E-commerce Store Owner</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Will this work if I've already been hit by an algorithm update?
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely! The recovery playbook is specifically designed for sites that have already been hit. It includes a 24-hour emergency protocol and a systematic 30-day recovery plan that has helped hundreds of sites recover and exceed their previous rankings.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Is this just about AI content, or does it help with all content?
+                </div>
+                <div class="faq-answer">
+                    <p>This guide helps with ALL content types. While it includes specific strategies for AI-enhanced content, the core principles apply to human-written content, product pages, service descriptions, and any content that needs to survive algorithm changes.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How quickly will I see results?
+                </div>
+                <div class="faq-answer">
+                    <p>Many users see initial improvements within 2-4 weeks of implementing the strategies. Full recovery typically takes 6-12 weeks depending on the extent of algorithm impact and how thoroughly you implement the recommendations.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Do I need technical skills to implement this?
+                </div>
+                <div class="faq-answer">
+                    <p>No! While some recommendations involve basic technical optimizations, most strategies focus on content improvement, author credibility, and user engagement. All templates include step-by-step instructions that anyone can follow.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    What makes this different from other SEO guides?
+                </div>
+                <div class="faq-answer">
+                    <p>This guide is based on the specific algorithm changes of 2025-2026, not outdated SEO tactics. It focuses on algorithm resistance rather than quick wins, and includes actual recovery protocols used by sites that successfully bounced back from major updates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2>Secure Your SEO Future</h2>
+            <div class="pricing-card">
+                <div class="price">$29</div>
+                <p class="price-label">One-time payment • Instant download</p>
+                
+                <div class="value-prop">
+                    💡 Save thousands in lost traffic revenue
+                </div>
+                
+                <div class="guarantee">
+                    🔒 30-Day Money-Back Guarantee
+                </div>
+                
+                <button id="checkout-button" class="cta-button" style="width: 100%; margin: 0;">
+                    Get Instant Access Now
+                </button>
+                
+                <p style="margin-top: 2rem; color: #666; font-size: 0.9rem;">
+                    Secure checkout powered by Stripe • Download starts immediately after purchase
+                </p>
+                
+                <div style="margin-top: 2rem; text-align: left;">
+                    <h4 style="margin-bottom: 1rem;">What you get immediately:</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;">✅ Emergency algorithm recovery playbook</li>
+                        <li style="margin-bottom: 0.5rem;">✅ AI content quality checklist & scoring system</li>
+                        <li style="margin-bottom: 0.5rem;">✅ Complete E-E-A-T optimization templates</li>
+                        <li style="margin-bottom: 0.5rem;">✅ Engagement optimization strategies</li>
+                        <li style="margin-bottom: 0.5rem;">✅ 74-page comprehensive implementation guide</li>
+                        <li style="margin-bottom: 0.5rem;">✅ Quick-reference checklists</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 BoostPrompt. Build algorithm-resistant SEO strategies.</p>
+            <p>Questions? Email hello@boostprompt.dev</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            answer.classList.toggle('show');
+        }
+        
+        // Stripe Checkout
+        const stripe = Stripe('pk_live_51T2rWLAqx5KYvfYDe1RWou0rvO9A5DGl85pNQ3G3qH2M4lUZ2bwGhJ6gY5Hy9vWr8uEe9fG9vW8k4U1H7G3g00k7N5M1wJ');
+        
+        document.getElementById('checkout-button').addEventListener('click', function () {
+            stripe.redirectToCheckout({
+                lineItems: [{
+                    price: 'price_1QYj3cAqx5KYvfYDxWKfRnCb', // AI-Proof SEO Guide price ID
+                    quantity: 1,
+                }],
+                mode: 'payment',
+                successUrl: 'https://boostprompt.dev/success?product=ai-proof-seo-guide',
+                cancelUrl: 'https://boostprompt.dev/ai-proof-seo-guide',
+            }).then(function (result) {
+                if (result.error) {
+                    console.error(result.error.message);
+                }
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
