@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Cache refresh: 2026-02-28 17:43 AEDT - Payment fix -->
+    <!-- Cache refresh: 2026-02-28 17:44 AEDT - HTTPS Stripe fix -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voice Commerce Prompts Pack: AI Agent & Voice Search Optimization - BoostPrompt</title>
@@ -15,7 +15,7 @@
     <meta property="og:url" content="https://boostprompt.dev/voice-commerce-prompts">
     <meta property="og:type" content="product">
     
-    <!-- Stripe -->
+    <!-- Stripe Payment Integration - Secure HTTPS -->
     <script src="https://js.stripe.com/v3/"></script>
     
     <style>
@@ -824,10 +824,16 @@
             answer.classList.toggle('show');
         }
         
-        // Stripe Checkout
+        // Stripe Checkout - Debug Version
+        console.log('Initializing Stripe...');
         const stripe = Stripe('pk_live_51T2rWLAqx5KYvfYDe1RWou0AdmyWwxeDcrg3sR1iUKosTBM0XQzjFYtOBM25kaG8B86ps7A39xOnD4hgtHkJWObe00i8R1xuVf');
+        console.log('Stripe initialized:', stripe);
         
         document.getElementById('checkout-button').addEventListener('click', function () {
+            console.log('Checkout button clicked');
+            console.log('Price ID:', 'price_1QaYLkAqx5KYvfYDINCRxbSt');
+            console.log('Stripe object:', stripe);
+            
             stripe.redirectToCheckout({
                 lineItems: [{
                     price: 'price_1QaYLkAqx5KYvfYDINCRxbSt',
@@ -837,8 +843,9 @@
                 successUrl: 'https://boostprompt.dev/success?product=voice-commerce-prompts',
                 cancelUrl: 'https://boostprompt.dev/voice-commerce-prompts',
             }).then(function (result) {
+                console.log('Checkout result:', result);
                 if (result.error) {
-                    console.error(result.error.message);
+                    console.error('Checkout error:', result.error.message);
                 }
             });
         });
