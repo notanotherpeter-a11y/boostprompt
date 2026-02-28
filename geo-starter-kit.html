@@ -701,22 +701,36 @@
         }
         
         // Stripe Checkout
-        const stripe = Stripe('pk_live_51T2pgb5qKQDTrgyLjQ2xj7pMjEUfgAoXtTPZVDvqWI37E79ALqe3vkUHQrTSzEOW5DeAp6jlAVzlV5nDyj40bYdk00AhdDnQwG');
+        // Using secure payment server instead of direct Stripe
+        const PAYMENT_SERVER = 'https://boost-pay-nodejs-69969-85286e5e9259.herokuapp.com';
         
-        document.getElementById('checkout-button').addEventListener('click', function () {
-            stripe.redirectToCheckout({
-                lineItems: [{
-                    price: 'price_1QaYKRAqx5KYvfYDxXrBx3vA',
-                    quantity: 1,
-                }],
-                mode: 'payment',
-                successUrl: 'https://boostprompt.dev/success?product=geo-starter-kit',
-                cancelUrl: 'https://boostprompt.dev/geo-starter-kit',
-            }).then(function (result) {
-                if (result.error) {
-                    console.error(result.error.message);
+        document.getElementById('checkout-button').addEventListener('click', async function () {
+            try {
+                this.textContent = '🔄 Processing...';
+                this.disabled = true;
+                
+                const response = await fetch(`${PAYMENT_SERVER}/create-checkout-session`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        product: 'geo-starter-kit',
+                        return_url: 'https://boostprompt.dev/success?product=geo-starter-kit',
+                        cancel_url: 'https://boostprompt.dev/geo-starter-kit.html'
+                    })
+                });
+                
+                const data = await response.json();
+                if (data.checkout_url) {
+                    window.location.href = data.checkout_url;
+                } else {
+                    throw new Error(data.error || 'Failed to create checkout');
                 }
-            });
+            } catch (error) {
+                console.error('Checkout error:', error);
+                this.textContent = 'Get Instant Access Now';
+                this.disabled = false;
+                alert('Payment system temporarily unavailable. Please try again.');
+            }
         });
         
         // Smooth scrolling for anchor links

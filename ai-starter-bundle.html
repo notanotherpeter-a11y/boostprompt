@@ -6,8 +6,8 @@
     <title>AI Starter Bundle - BoostPrompt</title>
     <meta name="description" content="Everything you need to go from AI-curious to AI-powered. Prompts, workflows, guides, and video walkthrough. Most popular bundle.">
     
-    <!-- Stripe -->
-    <script src="https://js.stripe.com/v3/"></script>
+    <!-- Secure Payment System -->
+    <script src="secure-payments.js"></script>
     
     <style>
         * {
@@ -240,7 +240,7 @@
                 🔒 30-Day Money-Back Guarantee
             </div>
             
-            <button id="checkout-button" class="cta-button">
+            <button id="checkout-button" class="cta-button" data-product="ai-starter-bundle">
                 🚀 Get Complete Bundle — $39
             </button>
             
@@ -251,23 +251,8 @@
     </div>
     
     <script>
-        const stripe = Stripe('pk_live_51T2pgb5qKQDTrgyLjQ2xj7pMjEUfgAoXtTPZVDvqWI37E79ALqe3vkUHQrTSzEOW5DeAp6jlAVzlV5nDyj40bYdk00AhdDnQwG');
-        
-        document.getElementById('checkout-button').addEventListener('click', function () {
-            stripe.redirectToCheckout({
-                lineItems: [{
-                    price: 'price_1T57ZLAqx5KYvfYD2pPT3Vbx',
-                    quantity: 1,
-                }],
-                mode: 'payment',
-                successUrl: 'https://boostprompt.dev/success?product=ai-starter-bundle',
-                cancelUrl: 'https://boostprompt.dev/ai-starter-bundle.html',
-            }).then(function (result) {
-                if (result.error) {
-                    console.error(result.error.message);
-                }
-            });
-        });
+        // Secure payment system handles checkout automatically
+        // Product: ai-starter-bundle ($39)
     </script>
 </body>
 </html>

@@ -6,8 +6,8 @@
     <title>50 Powerful AI Prompts for Business - BoostPrompt</title>
     <meta name="description" content="Get 50 battle-tested AI prompts for business. Marketing, sales, operations, customer service — all covered. Copy-paste ready in 30 seconds.">
     
-    <!-- Stripe -->
-    <script src="https://js.stripe.com/v3/"></script>
+    <!-- Secure Payment System -->
+    <script src="secure-payments.js"></script>
     
     <style>
         * {
@@ -229,7 +229,7 @@
                 🔒 30-Day Money-Back Guarantee
             </div>
             
-            <button id="checkout-button" class="cta-button">
+            <button id="checkout-button" class="cta-button" data-product="ai-prompts-pack">
                 ⚡ Get Instant Access — $19
             </button>
             
@@ -240,23 +240,8 @@
     </div>
     
     <script>
-        const stripe = Stripe('pk_live_51T2pgb5qKQDTrgyLjQ2xj7pMjEUfgAoXtTPZVDvqWI37E79ALqe3vkUHQrTSzEOW5DeAp6jlAVzlV5nDyj40bYdk00AhdDnQwG');
-        
-        document.getElementById('checkout-button').addEventListener('click', function () {
-            stripe.redirectToCheckout({
-                lineItems: [{
-                    price: 'price_1T57ZKAqx5KYvfYDHi6vcvvQ',
-                    quantity: 1,
-                }],
-                mode: 'payment',
-                successUrl: 'https://boostprompt.dev/success?product=50-ai-prompts-pack',
-                cancelUrl: 'https://boostprompt.dev/50-ai-prompts-pack.html',
-            }).then(function (result) {
-                if (result.error) {
-                    console.error(result.error.message);
-                }
-            });
-        });
+        // Secure payment system handles checkout automatically
+        // Product: ai-prompts-pack ($19)
     </script>
 </body>
 </html>

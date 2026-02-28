@@ -7,7 +7,7 @@
     <meta name="description" content="Master prompt engineering from zero to expert. Complete framework with 50+ real-world examples. Advanced techniques included.">
     
     <!-- Stripe -->
-    <script src="https://js.stripe.com/v3/"></script>
+    <script src="secure-payments.js"></script>
     
     <style>
         * {
@@ -229,7 +229,7 @@
                 🔒 30-Day Money-Back Guarantee
             </div>
             
-            <button id="checkout-button" class="cta-button">
+            <button id="checkout-button" class="cta-button" data-product="prompt-engineering-bible">
                 🧠 Master Prompt Engineering — $29
             </button>
             
@@ -240,23 +240,8 @@
     </div>
     
     <script>
-        const stripe = Stripe('pk_live_51T2pgb5qKQDTrgyLjQ2xj7pMjEUfgAoXtTPZVDvqWI37E79ALqe3vkUHQrTSzEOW5DeAp6jlAVzlV5nDyj40bYdk00AhdDnQwG');
-        
-        document.getElementById('checkout-button').addEventListener('click', function () {
-            stripe.redirectToCheckout({
-                lineItems: [{
-                    price: 'price_1T57tvAqx5KYvfYDT73fIFw4',
-                    quantity: 1,
-                }],
-                mode: 'payment',
-                successUrl: 'https://boostprompt.dev/success?product=prompt-engineering-bible',
-                cancelUrl: 'https://boostprompt.dev/prompt-engineering-bible.html',
-            }).then(function (result) {
-                if (result.error) {
-                    console.error(result.error.message);
-                }
-            });
-        });
+        // Secure payment system handles checkout automatically
+        // Product: prompt-engineering-bible ($29)
     </script>
 </body>
 </html>
