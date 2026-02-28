@@ -825,12 +825,17 @@
         }
         
         // Stripe Checkout
-        const stripe = Stripe('pk_live_51T2rWLAqx5KYvfYDe1RWou0rvO9A5DGl85pNQ3G3qH2M4lUZ2bwGhJ6gY5Hy9vWr8uEe9fG9vW8k4U1H7G3g00k7N5M1wJ');
+        const stripe = Stripe('pk_live_51T2rWLAqx5KYvfYDe1RWou0AdmyWwxeDcrg3sR1iUKosTBM0XQzjFYtOBM25kaG8B86ps7A39xOnD4hgtHkJWObe00i8R1xuVf');
         
         document.getElementById('checkout-button').addEventListener('click', function () {
+            // Temporarily redirect to contact until Stripe products are set up
+            window.open('mailto:hello@boostprompt.dev?subject=Purchase: Voice Commerce Prompts Pack ($19)&body=Hi! I\'d like to purchase the Voice Commerce Prompts Pack for $19. Please send payment instructions.', '_blank');
+            
+            // TODO: Replace with real Stripe price ID once products are created
+            /*
             stripe.redirectToCheckout({
                 lineItems: [{
-                    price: 'price_1QYj4dAqx5KYvfYDxLKfSnDb', // Voice Commerce Prompts Pack price ID
+                    price: 'REAL_STRIPE_PRICE_ID_HERE',
                     quantity: 1,
                 }],
                 mode: 'payment',
@@ -841,6 +846,7 @@
                     console.error(result.error.message);
                 }
             });
+            */
         });
         
         // Smooth scrolling for anchor links
