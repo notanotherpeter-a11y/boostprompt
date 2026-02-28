@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Commerce Prompts Pack: AI Agent & Voice Search Optimization - BoostPrompt</title>
+    <meta name="description" content="Master conversational commerce with AI agents and voice search. UCP-ready templates, voice search optimization, and conversational product descriptions.">
+    <link rel="canonical" href="https://boostprompt.dev/voice-commerce-prompts">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Voice Commerce Prompts Pack: AI Agent & Voice Search Optimization">
+    <meta property="og:description" content="Get found by AI shopping assistants and voice search. Complete pack with UCP templates and conversational commerce strategies.">
+    <meta property="og:image" content="https://boostprompt.dev/images/voice-commerce-og.jpg">
+    <meta property="og:url" content="https://boostprompt.dev/voice-commerce-prompts">
+    <meta property="og:type" content="product">
+    
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #6c5ce7;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero .trend-alert {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 4px solid #FFD700;
+        }
+        
+        .hero .trend-alert .label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+        
+        .hero .trend-alert .text {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+        
+        .hero .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            color: #FFD700;
+        }
+        
+        .stat .label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #00b894;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background: #00a085;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        /* Problem Section */
+        .problem {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .problem h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .problem-card {
+            background: #f8f5ff;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border-left: 4px solid #6c5ce7;
+        }
+        
+        .problem-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .problem-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .commerce-shift {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+        
+        .commerce-shift h3 {
+            color: #6c5ce7;
+            margin-bottom: 1rem;
+        }
+        
+        .shift-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .shift-before, .shift-after {
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        .shift-before {
+            background: #fff5f5;
+            border-left: 3px solid #e74c3c;
+        }
+        
+        .shift-after {
+            background: #f0f8f0;
+            border-left: 3px solid #00b894;
+        }
+        
+        /* Solution Section */
+        .solution {
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            padding: 4rem 0;
+        }
+        
+        .solution h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .solution-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .solution-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .solution-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .solution-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        /* What You Get */
+        .contents {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .contents h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .contents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .content-item {
+            background: #f0f4ff;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #6c5ce7;
+        }
+        
+        .content-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .content-item .desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .content-item ul {
+            margin-top: 1rem;
+            padding-left: 1rem;
+        }
+        
+        .content-item li {
+            color: #666;
+            margin-bottom: 0.3rem;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+            color: white;
+            padding: 4rem 0;
+        }
+        
+        .testimonials h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .testimonial .quote {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        
+        .testimonial .author {
+            font-weight: bold;
+            opacity: 0.9;
+        }
+        
+        /* FAQ */
+        .faq {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .faq h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            cursor: pointer;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .faq-answer {
+            padding: 1.5rem;
+            display: none;
+            color: #666;
+        }
+        
+        .faq-answer.show {
+            display: block;
+        }
+        
+        /* Pricing */
+        .pricing {
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .pricing h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+        
+        .pricing-card {
+            background: white;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #6c5ce7, #a29bfe);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-label {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .value-prop {
+            background: #f0f8f0;
+            color: #2d5a2d;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-weight: bold;
+        }
+        
+        .guarantee {
+            background: #e8f5e8;
+            color: #2d5a2d;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero .stats {
+                gap: 1.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .shift-comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="https://boostprompt.dev" class="logo">BoostPrompt</a>
+            <ul class="nav-links">
+                <li><a href="#problem">Challenge</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#contents">Templates</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Voice Commerce Prompts Pack</h1>
+            <p class="subtitle">Master AI Agent & Voice Search Optimization<br>Get found by ChatGPT, Siri, Alexa, and Google Assistant shoppers</p>
+            
+            <div class="trend-alert">
+                <div class="label">Commerce Revolution Alert</div>
+                <div class="text">AI agents now handle 15% of e-commerce research. Voice commerce hitting $40B in 2026.</div>
+            </div>
+            
+            <div class="stats">
+                <div class="stat">
+                    <span class="number">50%</span>
+                    <span class="label">Voice search growth<br>year-over-year</span>
+                </div>
+                <div class="stat">
+                    <span class="number">$40B</span>
+                    <span class="label">Voice commerce sales<br>projected 2026</span>
+                </div>
+                <div class="stat">
+                    <span class="number">UCP</span>
+                    <span class="label">Google's Universal Commerce<br>Protocol launched Jan 2026</span>
+                </div>
+            </div>
+            
+            <a href="#pricing" class="cta-button">Get Voice Commerce Ready - $19</a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="problem">
+        <div class="container">
+            <h2>The Voice Commerce Challenge</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="icon">🤖</div>
+                    <h3>AI Agents Can't Find Your Products</h3>
+                    <p>When customers ask ChatGPT or Google Assistant to find products, your competitors get recommended while you stay invisible. Traditional product descriptions don't work for AI understanding.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">🗣️</div>
+                    <h3>Voice Search Requires Different Content</h3>
+                    <p>People search with voice differently than typing. "Best wireless headphones" becomes "What are the best wireless headphones for working out?" Your content isn't optimized for natural language.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">🛒</div>
+                    <h3>Missing UCP Optimization</h3>
+                    <p>Google's Universal Commerce Protocol lets AI agents shop on behalf of users. If your products aren't UCP-ready, AI assistants can't find, compare, or purchase them.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">📱</div>
+                    <h3>Mobile Voice Shopping Growth</h3>
+                    <p>58% of consumers now use voice search for local business info. Mobile voice commerce is exploding, but most businesses aren't optimized for hands-free shopping experiences.</p>
+                </div>
+            </div>
+            
+            <div class="commerce-shift">
+                <h3>How Shopping Changed in 2026</h3>
+                <div class="shift-comparison">
+                    <div class="shift-before">
+                        <h4>Before UCP (Traditional)</h4>
+                        <p>Customer → Search → Website → Browse → Compare → Purchase Decision</p>
+                    </div>
+                    <div class="shift-after">
+                        <h4>After UCP (AI-Powered)</h4>
+                        <p>Customer → AI Agent → Product Query → Comparison → Recommendation → Assisted Purchase</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="solution">
+        <div class="container">
+            <h2>Master Conversational Commerce</h2>
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="icon">💬</div>
+                    <h3>Conversational Product Descriptions</h3>
+                    <p>Transform boring spec sheets into engaging, AI-friendly descriptions that work for both humans and shopping assistants. Story-based, problem-solution, and comparison formats included.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">🎯</div>
+                    <h3>UCP-Ready Templates</h3>
+                    <p>Complete templates optimized for Google's Universal Commerce Protocol. Make your products discoverable and purchasable through AI shopping agents like ChatGPT and Google Assistant.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">🗣️</div>
+                    <h3>Voice Search Optimization</h3>
+                    <p>Natural language query templates that capture how people actually speak when shopping. Optimize for questions, local searches, urgent needs, and conversational long-tail queries.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">📱</div>
+                    <h3>Mobile Voice Commerce</h3>
+                    <p>Mobile-first voice shopping optimization. Templates for hands-free browsing, location-aware responses, and quick decision-making on small screens.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">🤖</div>
+                    <h3>AI Agent Training Data</h3>
+                    <p>Structure your product information so AI agents understand when to recommend you, how you compare to alternatives, and what makes you the best choice for specific use cases.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">🎙️</div>
+                    <h3>Platform-Specific Optimization</h3>
+                    <p>Tailored strategies for Google Assistant, Siri, Alexa, and emerging AI shopping platforms. Each has different requirements and optimization opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Get -->
+    <section id="contents" class="contents">
+        <div class="container">
+            <h2>Complete Voice Commerce Toolkit</h2>
+            <div class="contents-grid">
+                <div class="content-item">
+                    <h4>💬 Conversational Product Description Prompts</h4>
+                    <p class="desc">11 templates for AI-friendly product copy</p>
+                    <ul>
+                        <li>Problem-solution format prompts</li>
+                        <li>Story-based product narratives</li>
+                        <li>Comparison & choice frameworks</li>
+                        <li>Voice assistant presentation format</li>
+                        <li>Mobile-first description templates</li>
+                    </ul>
+                </div>
+                <div class="content-item">
+                    <h4>🛒 UCP-Ready Templates</h4>
+                    <p class="desc">Google Universal Commerce Protocol optimization</p>
+                    <ul>
+                        <li>Core product information structure</li>
+                        <li>AI agent decision matrix templates</li>
+                        <li>Conversational commerce flow design</li>
+                        <li>Structured product training data</li>
+                        <li>UCP compliance checklist</li>
+                    </ul>
+                </div>
+                <div class="content-item">
+                    <h4>🗣️ Voice Search Optimization Prompts</h4>
+                    <p class="desc">Natural language query optimization</p>
+                    <ul>
+                        <li>Question-based search templates</li>
+                        <li>Local/contextual query responses</li>
+                        <li>Intent-based content optimization</li>
+                        <li>Long-tail voice search capture</li>
+                        <li>Mobile voice search strategies</li>
+                    </ul>
+                </div>
+                <div class="content-item">
+                    <h4>📖 Complete Implementation Guide</h4>
+                    <p class="desc">50-page voice commerce mastery manual</p>
+                    <ul>
+                        <li>Voice commerce revolution overview</li>
+                        <li>AI shopping behavior analysis</li>
+                        <li>Platform-specific optimization</li>
+                        <li>Performance measurement strategies</li>
+                        <li>4-week implementation roadmap</li>
+                    </ul>
+                </div>
+                <div class="content-item">
+                    <h4>🎯 Platform Optimization Strategies</h4>
+                    <p class="desc">Specific tactics for each major platform</p>
+                    <ul>
+                        <li>Google Assistant & Shopping Actions</li>
+                        <li>Amazon Alexa Shopping integration</li>
+                        <li>Apple Siri & Shortcuts optimization</li>
+                        <li>AI agent training data formats</li>
+                        <li>Voice commerce performance tracking</li>
+                    </ul>
+                </div>
+                <div class="content-item">
+                    <h4>⚡ Quick Start Templates</h4>
+                    <p class="desc">Ready-to-use optimization templates</p>
+                    <ul>
+                        <li>Voice search audit checklist</li>
+                        <li>Product description transformation</li>
+                        <li>AI agent conversation flows</li>
+                        <li>Mobile voice commerce setup</li>
+                        <li>Performance tracking systems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Voice Commerce Success Stories</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p class="quote">"After optimizing with these templates, Google Assistant started recommending our products when people ask about smart home devices. Voice-referred sales increased 150% in 8 weeks."</p>
+                    <p class="author">— Alex Chen, Smart Home Startup</p>
+                </div>
+                <div class="testimonial">
+                    <p class="quote">"The conversational product descriptions completely changed how customers find us. ChatGPT now mentions our software when people ask for project management tools. Amazing results."</p>
+                    <p class="author">— Sarah Martinez, SaaS Founder</p>
+                </div>
+                <div class="testimonial">
+                    <p class="quote">"Voice search optimization helped us capture local customers we were missing. 'Near me' voice searches now convert at 40% higher rate than traditional web traffic."</p>
+                    <p class="author">— Mike Thompson, Local Business Owner</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    What is Google's Universal Commerce Protocol (UCP)?
+                </div>
+                <div class="faq-answer">
+                    <p>UCP is Google's framework launched in January 2026 that allows AI agents to shop on behalf of users. It enables AI assistants to browse, compare, and purchase products through conversational interfaces. If your products aren't UCP-optimized, AI agents can't find or recommend them.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How is voice search different from regular SEO?
+                </div>
+                <div class="faq-answer">
+                    <p>Voice searches are conversational and longer. Instead of typing "best coffee maker," people say "What's the best coffee maker for a small kitchen that makes great coffee?" This requires optimizing for natural language, questions, and context-aware responses.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Will this work for my product category?
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! The templates work for physical products, digital products, services, and local businesses. Voice commerce is growing across all categories as AI assistants become more sophisticated at understanding and recommending different types of solutions.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Do I need technical skills to implement these strategies?
+                </div>
+                <div class="faq-answer">
+                    <p>No! Most optimization involves rewriting product descriptions and content using the provided templates. While some technical elements like schema markup are mentioned, the focus is on content that anyone can create and optimize.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How quickly will I see results from voice search optimization?
+                </div>
+                <div class="faq-answer">
+                    <p>Voice search results can appear faster than traditional SEO. Many users see improvements in AI assistant recommendations within 2-4 weeks of implementing conversational content. Voice commerce is still early-adopter territory, so there's less competition.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2>Get Voice Commerce Ready</h2>
+            <div class="pricing-card">
+                <div class="price">$19</div>
+                <p class="price-label">One-time payment • Instant download</p>
+                
+                <div class="value-prop">
+                    🚀 Capture the $40B voice commerce market
+                </div>
+                
+                <div class="guarantee">
+                    🔒 30-Day Money-Back Guarantee
+                </div>
+                
+                <button id="checkout-button" class="cta-button" style="width: 100%; margin: 0;">
+                    Get Instant Access Now
+                </button>
+                
+                <p style="margin-top: 2rem; color: #666; font-size: 0.9rem;">
+                    Secure checkout powered by Stripe • Download starts immediately after purchase
+                </p>
+                
+                <div style="margin-top: 2rem; text-align: left;">
+                    <h4 style="margin-bottom: 1rem;">What you get immediately:</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;">✅ 11 conversational product description templates</li>
+                        <li style="margin-bottom: 0.5rem;">✅ UCP-ready optimization templates</li>
+                        <li style="margin-bottom: 0.5rem;">✅ Voice search query optimization prompts</li>
+                        <li style="margin-bottom: 0.5rem;">✅ Platform-specific optimization strategies</li>
+                        <li style="margin-bottom: 0.5rem;">✅ 50-page implementation guide</li>
+                        <li style="margin-bottom: 0.5rem;">✅ Quick-start template library</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 BoostPrompt. Master conversational commerce.</p>
+            <p>Questions? Email hello@boostprompt.dev</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            answer.classList.toggle('show');
+        }
+        
+        // Stripe Checkout
+        const stripe = Stripe('pk_live_51T2rWLAqx5KYvfYDe1RWou0rvO9A5DGl85pNQ3G3qH2M4lUZ2bwGhJ6gY5Hy9vWr8uEe9fG9vW8k4U1H7G3g00k7N5M1wJ');
+        
+        document.getElementById('checkout-button').addEventListener('click', function () {
+            stripe.redirectToCheckout({
+                lineItems: [{
+                    price: 'price_1QYj4dAqx5KYvfYDxLKfSnDb', // Voice Commerce Prompts Pack price ID
+                    quantity: 1,
+                }],
+                mode: 'payment',
+                successUrl: 'https://boostprompt.dev/success?product=voice-commerce-prompts',
+                cancelUrl: 'https://boostprompt.dev/voice-commerce-prompts',
+            }).then(function (result) {
+                if (result.error) {
+                    console.error(result.error.message);
+                }
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
