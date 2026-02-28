@@ -34,7 +34,11 @@
         coach_trainer: { priceId: 'price_1T57ZOAqx5KYvfYDG1FUhXC8', name: 'Coaches & Trainers AI Kit', amount: 39 },
         dental: { priceId: 'price_1T57ZOAqx5KYvfYD3yIAWzbE', name: 'Dental Practice AI Solutions', amount: 35 },
         product3: { priceId: 'price_1T57tvAqx5KYvfYDT73fIFw4', name: 'Prompt Engineering Bible', amount: 29 },
-        product4: { priceId: 'price_1T57tvAqx5KYvfYDL9QA7RNC', name: 'AI Email & Outreach Templates', amount: 24 }
+        product4: { priceId: 'price_1T57tvAqx5KYvfYDL9QA7RNC', name: 'AI Email & Outreach Templates', amount: 24 },
+        geo_starter_kit: { priceId: 'price_1QaYKRAqx5KYvfYDxXrBx3vA', name: 'GEO Starter Kit: Get Your Business Cited by AI', amount: 39 },
+        ai_proof_seo: { priceId: 'price_1QaYL6Aqx5KYvfYD4mhZQg8w', name: 'AI-Proof Your SEO: 2026 Survival Guide', amount: 29 },
+        voice_commerce: { priceId: 'price_1QaYLkAqx5KYvfYDINCRxbSt', name: 'Voice Commerce Prompts Pack', amount: 19 },
+        digital_pr: { priceId: 'price_1QaYMAQqx5KYvfYDxb1qf3xk', name: 'Digital PR for AI Citations', amount: 39 }
     };
 
     const SUCCESS_URL = window.location.origin + '/success.html';
@@ -199,6 +203,10 @@
     window.buyAIStarterBundle = function() { checkout('product2', findClickedButton()); };
     window.buyPromptEngineeringBible = function() { checkout('product3', findClickedButton()); };
     window.buyEmailTemplates = function() { checkout('product4', findClickedButton()); };
+    window.buyGEOStarterKit = function() { checkout('geo_starter_kit', findClickedButton()); };
+    window.buyAIProofSEO = function() { checkout('ai_proof_seo', findClickedButton()); };
+    window.buyVoiceCommerce = function() { checkout('voice_commerce', findClickedButton()); };
+    window.buyDigitalPR = function() { checkout('digital_pr', findClickedButton()); };
     window.buyMarketingAgencyKit = function() { checkout('marketing_agency', findClickedButton()); };
     window.buyBusinessConsultantKit = function() { checkout('business_consultant', findClickedButton()); };
     window.buyFreelancerKit = function() { checkout('freelancer', findClickedButton()); };
@@ -247,6 +255,12 @@
             const onclick = btn.getAttribute('onclick') || '';
             if (onclick.includes('PromptsPack')) btn.setAttribute('data-product', 'product1');
             else if (onclick.includes('StarterBundle')) btn.setAttribute('data-product', 'product2');
+            else if (onclick.includes('PromptEngineeringBible')) btn.setAttribute('data-product', 'product3');
+            else if (onclick.includes('EmailTemplates')) btn.setAttribute('data-product', 'product4');
+            else if (onclick.includes('GEOStarterKit')) btn.setAttribute('data-product', 'geo_starter_kit');
+            else if (onclick.includes('AIProofSEO')) btn.setAttribute('data-product', 'ai_proof_seo');
+            else if (onclick.includes('VoiceCommerce')) btn.setAttribute('data-product', 'voice_commerce');
+            else if (onclick.includes('DigitalPR')) btn.setAttribute('data-product', 'digital_pr');
             else if (onclick.includes('MarketingAgency')) btn.setAttribute('data-product', 'marketing_agency');
             else if (onclick.includes('BusinessConsultant')) btn.setAttribute('data-product', 'business_consultant');
             else if (onclick.includes('Freelancer')) btn.setAttribute('data-product', 'freelancer');
