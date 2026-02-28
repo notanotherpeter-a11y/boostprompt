@@ -817,14 +817,9 @@
         const stripe = Stripe('pk_live_51T2rWLAqx5KYvfYDe1RWou0AdmyWwxeDcrg3sR1iUKosTBM0XQzjFYtOBM25kaG8B86ps7A39xOnD4hgtHkJWObe00i8R1xuVf');
         
         document.getElementById('checkout-button').addEventListener('click', function () {
-            // Temporarily redirect to contact until Stripe products are set up
-            window.open('mailto:hello@boostprompt.dev?subject=Purchase: AI-Proof SEO Guide ($29)&body=Hi! I\'d like to purchase the AI-Proof SEO Guide for $29. Please send payment instructions.', '_blank');
-            
-            // TODO: Replace with real Stripe price ID once products are created
-            /*
             stripe.redirectToCheckout({
                 lineItems: [{
-                    price: 'REAL_STRIPE_PRICE_ID_HERE',
+                    price: 'price_1QaYL6Aqx5KYvfYD4mhZQg8w',
                     quantity: 1,
                 }],
                 mode: 'payment',
@@ -835,7 +830,6 @@
                     console.error(result.error.message);
                 }
             });
-            */
         });
         
         // Smooth scrolling for anchor links
