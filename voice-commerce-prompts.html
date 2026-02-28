@@ -824,16 +824,10 @@
             answer.classList.toggle('show');
         }
         
-        // Stripe Checkout - Debug Version
-        console.log('Initializing Stripe...');
+        // Stripe Checkout
         const stripe = Stripe('pk_live_51T2rWLAqx5KYvfYDe1RWou0AdmyWwxeDcrg3sR1iUKosTBM0XQzjFYtOBM25kaG8B86ps7A39xOnD4hgtHkJWObe00i8R1xuVf');
-        console.log('Stripe initialized:', stripe);
         
         document.getElementById('checkout-button').addEventListener('click', function () {
-            console.log('Checkout button clicked');
-            console.log('Price ID:', 'price_1QaYLkAqx5KYvfYDINCRxbSt');
-            console.log('Stripe object:', stripe);
-            
             stripe.redirectToCheckout({
                 lineItems: [{
                     price: 'price_1QaYLkAqx5KYvfYDINCRxbSt',
@@ -843,9 +837,8 @@
                 successUrl: 'https://boostprompt.dev/success?product=voice-commerce-prompts',
                 cancelUrl: 'https://boostprompt.dev/voice-commerce-prompts',
             }).then(function (result) {
-                console.log('Checkout result:', result);
                 if (result.error) {
-                    console.error('Checkout error:', result.error.message);
+                    console.error(result.error.message);
                 }
             });
         });
