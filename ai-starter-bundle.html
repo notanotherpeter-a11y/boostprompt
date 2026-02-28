@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Starter Bundle - BoostPrompt</title>
+    <meta name="description" content="Everything you need to go from AI-curious to AI-powered. Prompts, workflows, guides, and video walkthrough. Most popular bundle.">
+    
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .badge {
+            background: #FF6B35;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .product-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+        
+        .product-header h1 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+        
+        .product-header .price {
+            font-size: 72px;
+            font-weight: 900;
+            color: #4CAF50;
+            margin: 20px 0;
+        }
+        
+        .product-header .original-price {
+            font-size: 24px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: line-through;
+            margin-right: 15px;
+        }
+        
+        .content {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin: 30px 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .feature .icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .feature h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .feature p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .cta-button {
+            background: #FF6B35;
+            color: white;
+            padding: 20px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+        
+        .guarantee {
+            text-align: center;
+            color: #4CAF50;
+            font-weight: 600;
+            margin: 30px 0;
+            font-size: 18px;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .product-header h1 {
+                font-size: 32px;
+            }
+            
+            .product-header .price {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="product-header">
+            <div class="badge">🏆 MOST POPULAR BUNDLE</div>
+            <h1>AI Starter Bundle</h1>
+            <p style="font-size: 24px; margin: 20px 0;">Everything you need to go from AI-curious to AI-powered</p>
+            <div>
+                <span class="original-price">$97</span>
+                <span class="price">$39</span>
+            </div>
+            <p style="font-size: 18px; color: rgba(255,255,255,0.8);">⚡ Complete bundle - Save $58</p>
+        </div>
+        
+        <div class="content">
+            <h2 style="text-align: center; margin-bottom: 30px; font-size: 32px;">Complete AI Automation Kit</h2>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="icon">📦</div>
+                    <div>
+                        <h3>100+ Prompts (Beginner to Advanced)</h3>
+                        <p>Progressive learning path. Start simple, build to advanced AI automation. Every business function covered.</p>
+                    </div>
+                </div>
+                
+                <div class="feature">
+                    <div class="icon">⚙️</div>
+                    <div>
+                        <h3>5 Automation Workflow Templates</h3>
+                        <p>Ready-to-implement automation sequences. Connect AI tools to automate repetitive business tasks.</p>
+                    </div>
+                </div>
+                
+                <div class="feature">
+                    <div class="icon">📊</div>
+                    <div>
+                        <h3>AI Tool Comparison Guide (2026)</h3>
+                        <p>Which AI tools to use when. Features, pricing, pros/cons. Make informed decisions, avoid expensive mistakes.</p>
+                    </div>
+                </div>
+                
+                <div class="feature">
+                    <div class="icon">🎥</div>
+                    <div>
+                        <h3>Step-by-Step Video Walkthrough</h3>
+                        <p>Watch over my shoulder as I implement AI automation in a real business. See exactly how it's done.</p>
+                    </div>
+                </div>
+                
+                <div class="feature">
+                    <div class="icon">💬</div>
+                    <div>
+                        <h3>Priority Email Support</h3>
+                        <p>Stuck? Get help directly from us. Priority response within 24 hours to get you unstuck fast.</p>
+                    </div>
+                </div>
+                
+                <div class="feature">
+                    <div class="icon">🔄</div>
+                    <div>
+                        <h3>Free Lifetime Updates</h3>
+                        <p>AI moves fast. We keep pace. Every new model, every new feature - you get updated templates forever.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h2 style="margin-bottom: 20px;">Join 84 People Who Bought This Week</h2>
+            <p style="margin-bottom: 30px; font-size: 18px;">Complete AI transformation kit - from beginner to automation expert</p>
+            
+            <div class="guarantee">
+                🔒 30-Day Money-Back Guarantee
+            </div>
+            
+            <button id="checkout-button" class="cta-button">
+                🚀 Get Complete Bundle — $39
+            </button>
+            
+            <p style="margin-top: 30px; font-size: 16px; opacity: 0.9;">
+                Secure checkout powered by Stripe • Download starts immediately after purchase
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        const stripe = Stripe('pk_live_51T2rWLAqx5KYvfYDe1RWou0AdmyWwxeDcrg3sR1iUKosTBM0XQzjFYtOBM25kaG8B86ps7A39xOnD4hgtHkJWObe00i8R1xuVf');
+        
+        document.getElementById('checkout-button').addEventListener('click', function () {
+            stripe.redirectToCheckout({
+                lineItems: [{
+                    price: 'price_1T57ZLAqx5KYvfYD2pPT3Vbx',
+                    quantity: 1,
+                }],
+                mode: 'payment',
+                successUrl: 'https://boostprompt.dev/success?product=ai-starter-bundle',
+                cancelUrl: 'https://boostprompt.dev/ai-starter-bundle.html',
+            }).then(function (result) {
+                if (result.error) {
+                    console.error(result.error.message);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
