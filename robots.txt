@@ -1,9 +1,26 @@
 User-agent: *
 Allow: /
-Sitemap: https://boostprompt.ai/sitemap.xml
 
-User-agent: Googlebot
+# AI Crawlers (for GEO optimization)
+User-agent: GPTBot
 Allow: /
 
-User-agent: Bingbot
+User-agent: ClaudeBot  
 Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Sitemap location
+Sitemap: https://boostprompt.dev/sitemap.xml
+
+# Block admin/private areas
+Disallow: /admin/
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Allow important files
+Allow: /stripe-config.js
+Allow: /images/
+Allow: /*.css
+Allow: /*.js
