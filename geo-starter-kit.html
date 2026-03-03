@@ -17,6 +17,7 @@
     
     <!-- Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
+    <script src="stripe-config.js"></script>
     
     <style>
         * {
@@ -700,36 +701,14 @@
             answer.classList.toggle('show');
         }
         
-        // Stripe Checkout
-        // Using secure payment server instead of direct Stripe
-        const PAYMENT_SERVER = 'https://boost-pay-nodejs-69969-85286e5e9259.herokuapp.com';
-        
-        document.getElementById('checkout-button').addEventListener('click', async function () {
-            try {
-                this.textContent = '🔄 Processing...';
-                this.disabled = true;
-                
-                const response = await fetch(`${PAYMENT_SERVER}/create-checkout-session`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        product: 'geo-starter-kit',
-                        return_url: 'https://boostprompt.dev/success?product=geo-starter-kit',
-                        cancel_url: 'https://boostprompt.dev/geo-starter-kit.html'
-                    })
-                });
-                
-                const data = await response.json();
-                if (data.checkout_url) {
-                    window.location.href = data.checkout_url;
-                } else {
-                    throw new Error(data.error || 'Failed to create checkout');
-                }
-            } catch (error) {
-                console.error('Checkout error:', error);
-                this.textContent = 'Get Instant Access Now';
-                this.disabled = false;
-                alert('Payment system temporarily unavailable. Please try again.');
+        // Direct Stripe Checkout (Fixed)
+        document.getElementById('checkout-button').addEventListener('click', function () {
+            // Use the global checkout function from stripe-config.js
+            if (typeof buyGEOStarterKit === 'function') {
+                buyGEOStarterKit();
+            } else {
+                console.error('Stripe checkout not loaded');
+                alert('Payment system loading. Please try again in a moment.');
             }
         });
         

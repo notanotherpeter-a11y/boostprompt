@@ -17,6 +17,7 @@
     
     <!-- Stripe Payment Integration - Secure HTTPS -->
     <script src="https://js.stripe.com/v3/"></script>
+    <script src="stripe-config.js"></script>
     
     <style>
         * {
@@ -824,23 +825,15 @@
             answer.classList.toggle('show');
         }
         
-        // Stripe Checkout
-        const stripe = Stripe('pk_live_51T2pgb5qKQDTrgyLjQ2xj7pMjEUfgAoXtTPZVDvqWI37E79ALqe3vkUHQrTSzEOW5DeAp6jlAVzlV5nDyj40bYdk00AhdDnQwG');
-        
+        // Direct Stripe Checkout (Fixed)
         document.getElementById('checkout-button').addEventListener('click', function () {
-            stripe.redirectToCheckout({
-                lineItems: [{
-                    price: 'price_1QaYLkAqx5KYvfYDINCRxbSt',
-                    quantity: 1,
-                }],
-                mode: 'payment',
-                successUrl: 'https://boostprompt.dev/success?product=voice-commerce-prompts',
-                cancelUrl: 'https://boostprompt.dev/voice-commerce-prompts',
-            }).then(function (result) {
-                if (result.error) {
-                    console.error(result.error.message);
-                }
-            });
+            // Use the global checkout function from stripe-config.js
+            if (typeof buyVoiceCommerce === 'function') {
+                buyVoiceCommerce();
+            } else {
+                console.error('Stripe checkout not loaded');
+                alert('Payment system loading. Please try again in a moment.');
+            }
         });
         
         // Smooth scrolling for anchor links

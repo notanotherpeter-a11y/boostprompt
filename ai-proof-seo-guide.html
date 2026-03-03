@@ -17,6 +17,7 @@
     
     <!-- Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
+    <script src="stripe-config.js"></script>
     
     <style>
         * {
@@ -813,23 +814,15 @@
             answer.classList.toggle('show');
         }
         
-        // Stripe Checkout
-        const stripe = Stripe('pk_live_51T2pgb5qKQDTrgyLjQ2xj7pMjEUfgAoXtTPZVDvqWI37E79ALqe3vkUHQrTSzEOW5DeAp6jlAVzlV5nDyj40bYdk00AhdDnQwG');
-        
+        // Direct Stripe Checkout (Fixed)
         document.getElementById('checkout-button').addEventListener('click', function () {
-            stripe.redirectToCheckout({
-                lineItems: [{
-                    price: 'price_1QaYL6Aqx5KYvfYD4mhZQg8w',
-                    quantity: 1,
-                }],
-                mode: 'payment',
-                successUrl: 'https://boostprompt.dev/success?product=ai-proof-seo-guide',
-                cancelUrl: 'https://boostprompt.dev/ai-proof-seo-guide',
-            }).then(function (result) {
-                if (result.error) {
-                    console.error(result.error.message);
-                }
-            });
+            // Use the global checkout function from stripe-config.js
+            if (typeof buyAIProofSEO === 'function') {
+                buyAIProofSEO();
+            } else {
+                console.error('Stripe checkout not loaded');
+                alert('Payment system loading. Please try again in a moment.');
+            }
         });
         
         // Smooth scrolling for anchor links
