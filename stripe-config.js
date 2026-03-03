@@ -129,15 +129,28 @@
             console.error('[BP Pay] Stripe checkout failed:', err.message);
         }
 
-        // Attempt 2: Direct Stripe Checkout URL construction
-        // This creates a checkout session URL directly
+        // Attempt 2: Retry Stripe checkout after brief delay
         try {
-            const checkoutUrl = `https://checkout.stripe.com/pay/${product.priceId}?quantity=1`;
-            console.log('[BP Pay] Trying direct checkout URL');
-            window.location.href = checkoutUrl;
+            console.log('[BP Pay] Retrying Stripe checkout...');
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second
+            
+            if (!stripeReady) initStripe();
+            if (!stripe) throw new Error('Stripe still not available');
+
+            const retryResult = await stripe.redirectToCheckout({
+                lineItems: [{ price: product.priceId, quantity: 1 }],
+                mode: 'payment',
+                successUrl: SUCCESS_URL + '?product=' + encodeURIComponent(productKey),
+                cancelUrl: CANCEL_URL
+            });
+
+            if (retryResult.error) {
+                throw retryResult.error;
+            }
             return;
+            
         } catch (e) {
-            console.error('[BP Pay] Direct URL failed:', e);
+            console.error('[BP Pay] Retry failed:', e);
         }
 
         // Attempt 3: Show inline payment modal
