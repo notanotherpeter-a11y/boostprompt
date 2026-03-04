@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Direct Stripe Test</title>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <h1>Direct Stripe Product Test</h1>
+    <p>Testing your new Stripe price IDs directly:</p>
+    
+    <button onclick="testGEO()">Test GEO Kit ($39)</button><br><br>
+    <button onclick="testSEO()">Test AI SEO Guide ($29)</button><br><br>
+    <button onclick="testVoice()">Test Voice Commerce ($19)</button><br><br>
+    <button onclick="testPR()">Test Digital PR ($39)</button><br><br>
+    
+    <div id="result"></div>
+    
+    <script>
+        const stripe = Stripe('pk_live_51T2rWLAqx5KYvfYDe1RWou0AdmyWwxeDcrg3sR1iUKosTBM0XQzjFYtOBM25kaG8B86ps7A39xOnD4hgtHkJWObe00i8R1xuVf');
+        
+        function testGEO() {
+            document.getElementById('result').innerHTML = 'Testing GEO Kit...';
+            stripe.redirectToCheckout({
+                lineItems: [{ price: 'price_1T7BN15qKQDTrgyLOo8zJhjO', quantity: 1 }],
+                mode: 'payment',
+                successUrl: window.location.origin + '/success.html',
+                cancelUrl: window.location.origin
+            }).then(function(result) {
+                if (result.error) {
+                    document.getElementById('result').innerHTML = '❌ ERROR: ' + result.error.message;
+                }
+            });
+        }
+        
+        function testSEO() {
+            document.getElementById('result').innerHTML = 'Testing AI SEO Guide...';
+            stripe.redirectToCheckout({
+                lineItems: [{ price: 'price_1T7BRd5qKQDTrgyL6n0JCZ7B', quantity: 1 }],
+                mode: 'payment',
+                successUrl: window.location.origin + '/success.html',
+                cancelUrl: window.location.origin
+            }).then(function(result) {
+                if (result.error) {
+                    document.getElementById('result').innerHTML = '❌ ERROR: ' + result.error.message;
+                }
+            });
+        }
+        
+        function testVoice() {
+            document.getElementById('result').innerHTML = 'Testing Voice Commerce...';
+            stripe.redirectToCheckout({
+                lineItems: [{ price: 'price_1T7BQy5qKQDTrgyLe86Jem7M', quantity: 1 }],
+                mode: 'payment',
+                successUrl: window.location.origin + '/success.html',
+                cancelUrl: window.location.origin
+            }).then(function(result) {
+                if (result.error) {
+                    document.getElementById('result').innerHTML = '❌ ERROR: ' + result.error.message;
+                }
+            });
+        }
+        
+        function testPR() {
+            document.getElementById('result').innerHTML = 'Testing Digital PR...';
+            stripe.redirectToCheckout({
+                lineItems: [{ price: 'price_1T7BSF5qKQDTrgyLi9YDRCeP', quantity: 1 }],
+                mode: 'payment',
+                successUrl: window.location.origin + '/success.html',
+                cancelUrl: window.location.origin
+            }).then(function(result) {
+                if (result.error) {
+                    document.getElementById('result').innerHTML = '❌ ERROR: ' + result.error.message;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
