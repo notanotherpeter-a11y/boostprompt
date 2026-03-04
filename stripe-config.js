@@ -14,7 +14,7 @@
     'use strict';
 
     // ── Configuration ──────────────────────────────────────────
-    const STRIPE_PK = 'pk_live_51T2rWLAqx5KYvfYDe1RWou0AdmyWwxeDcrg3sR1iUKosTBM0XQzjFYtOBM25kaG8B86ps7A39xOnD4hgtHkJWObe00i8R1xuVf';
+    const STRIPE_PK = 'pk_live_51T2pgb5qKQDTrgyLjQ2xj7pMjEUfgAoXtTPZVDvqWI37E79ALqe3vkUHQrTSzEOW5DeAp6jlAVzlV5nDyj40bYdk00AhdDnQwG';
 
     const PRODUCTS = {
         product1: {
