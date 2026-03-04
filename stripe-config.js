@@ -36,7 +36,7 @@
         product3: { priceId: 'price_1T57tvAqx5KYvfYDT73fIFw4', name: 'Prompt Engineering Bible', amount: 29 },
         product4: { priceId: 'price_1T57tvAqx5KYvfYDL9QA7RNC', name: 'AI Email & Outreach Templates', amount: 24 },
         geo_starter_kit: { priceId: 'price_1T57ZLAqx5KYvfYD2pPT3Vbx', name: 'GEO Starter Kit: Get Your Business Cited by AI', amount: 39 },
-        ai_proof_seo: { priceId: 'price_1T57ZLAqx5KYvfYD2pPT3Vbx', name: 'AI-Proof Your SEO: 2026 Survival Guide', amount: 29 },
+        ai_proof_seo: { priceId: 'price_1T57ZLAqx5KYvfYD2pPT3Vbx', name: 'AI-Proof Your SEO: 2026 Survival Guide', amount: 39 },
         voice_commerce: { priceId: 'price_1T57ZKAqx5KYvfYDHi6vcvvQ', name: 'Voice Commerce Prompts Pack', amount: 19 },
         digital_pr: { priceId: 'price_1T57ZLAqx5KYvfYD2pPT3Vbx', name: 'Digital PR for AI Citations', amount: 39 }
     };
