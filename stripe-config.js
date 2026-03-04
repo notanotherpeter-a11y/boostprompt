@@ -35,10 +35,10 @@
         dental: { priceId: 'price_1T57ZOAqx5KYvfYD3yIAWzbE', name: 'Dental Practice AI Solutions', amount: 35 },
         product3: { priceId: 'price_1T57tvAqx5KYvfYDT73fIFw4', name: 'Prompt Engineering Bible', amount: 29 },
         product4: { priceId: 'price_1T57tvAqx5KYvfYDL9QA7RNC', name: 'AI Email & Outreach Templates', amount: 24 },
-        geo_starter_kit: { priceId: 'price_1T57ZLAqx5KYvfYD2pPT3Vbx', name: 'GEO Starter Kit: Get Your Business Cited by AI', amount: 39 },
-        ai_proof_seo: { priceId: 'price_1T57ZLAqx5KYvfYD2pPT3Vbx', name: 'AI-Proof Your SEO: 2026 Survival Guide', amount: 39 },
-        voice_commerce: { priceId: 'price_1T57ZKAqx5KYvfYDHi6vcvvQ', name: 'Voice Commerce Prompts Pack', amount: 19 },
-        digital_pr: { priceId: 'price_1T57ZLAqx5KYvfYD2pPT3Vbx', name: 'Digital PR for AI Citations', amount: 39 }
+        geo_starter_kit: { priceId: 'price_1T7BN15qKQDTrgyLOo8zJhjO', name: 'GEO Starter Kit: Get Your Business Cited by AI', amount: 39 },
+        ai_proof_seo: { priceId: 'price_1T7BRd5qKQDTrgyL6n0JCZ7B', name: 'AI-Proof Your SEO: 2026 Survival Guide', amount: 29 },
+        voice_commerce: { priceId: 'price_1T7BQy5qKQDTrgyLe86Jem7M', name: 'Voice Commerce Prompts Pack', amount: 19 },
+        digital_pr: { priceId: 'price_1T7BSF5qKQDTrgyLi9YDRCeP', name: 'Digital PR for AI Citations', amount: 39 }
     };
 
     const SUCCESS_URL = window.location.origin + '/success.html';
