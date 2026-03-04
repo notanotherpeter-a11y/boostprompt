@@ -816,13 +816,8 @@
         
         // Direct Stripe Checkout (Fixed)
         document.getElementById('checkout-button').addEventListener('click', function () {
-            // Use the global checkout function from stripe-config.js
-            if (typeof buyAIProofSEO === 'function') {
-                buyAIProofSEO();
-            } else {
-                console.error('Stripe checkout not loaded');
-                alert('Payment system loading. Please try again in a moment.');
-            }
+            // Direct Stripe Payment Link - Always works!
+            window.location.href = 'https://buy.stripe.com/bJe5kCdjdaotc4X2DKbV606';
         });
         
         // Smooth scrolling for anchor links

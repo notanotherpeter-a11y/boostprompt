@@ -827,13 +827,8 @@
         
         // Direct Stripe Checkout (Fixed)
         document.getElementById('checkout-button').addEventListener('click', function () {
-            // Use the global checkout function from stripe-config.js
-            if (typeof buyVoiceCommerce === 'function') {
-                buyVoiceCommerce();
-            } else {
-                console.error('Stripe checkout not loaded');
-                alert('Payment system loading. Please try again in a moment.');
-            }
+            // Direct Stripe Payment Link - Always works!
+            window.location.href = 'https://buy.stripe.com/8x2eVcfrleEJed5diobV605';
         });
         
         // Smooth scrolling for anchor links
